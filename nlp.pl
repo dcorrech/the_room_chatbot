@@ -25,19 +25,3 @@ lex(a, det).
 lex(woman, n).
 lex(man, n).
 lex(shoots, v).
-
-main :- start_chat.
-
-start_chat :-
-    write('I did NOT hit her, I did nooooot- Oh hi. What is your name?'),nl,
-    readln([X|_]),
-    write('Oh hi '),writeq(X),write('!'),
-    assertz(name(X)),
-    process(X).
-
-% process(X) :-
-%     repeat,
-%     prompt(),
-
-
-process(bye) :- !.
