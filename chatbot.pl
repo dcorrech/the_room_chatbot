@@ -1,3 +1,4 @@
+:- dynamic name/1. %need to declare every predicate we want to learn as dynamic up here!
 begin_your_journey :- welcome_user, gather_data.
 
 welcome_user :- write('I did NOT hit her, I did nooooot- Oh hi. What is your name?'),
@@ -22,8 +23,6 @@ gather_data(State) :-
 
 %Can repeat logic below with any predicates that we want to save to KB
 save_to_kb(Pred,Ans) :- is_name(Pred), assertz(name(Ans)).
-
-prompt(start, 'have you seen Danny?').
 
 question(1, "Do you poop?", poop).
 question(2, "Do you eat apples?", apples).
