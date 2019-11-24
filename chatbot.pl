@@ -1,5 +1,5 @@
 :- dynamic name/1. %need to declare every predicate we want to learn as dynamic up here!
-begin_your_journey :- welcome_user, start_chat.
+begin_your_journey :- welcome_user, gather_data.
 
 welcome_user :- write('I did NOT hit her, I did nooooot- Oh hi. What is your name?'),
                             nl,
@@ -10,23 +10,16 @@ welcome_user :- write('I did NOT hit her, I did nooooot- Oh hi. What is your nam
                             nl,
                             assertz(name(X)).
 
-start_chat :-
-    process(1).
-
-process(State) :-
+gather_data(State) :-
     question(State,Question,Pred),
     write(Question),
     nl,
     readln(Ans),
     save_to_kb(Pred,Ans),
     NextState is (State + 1),
-    process(NextState).
-
-% Final "base case" of process is where we return the result. get_result needs inputs from all predicates that we've saved to KB.
-process(10) :- 
-    name(X),
-    get_result(X,Result),
-    write(Result). %Will need to add next stage of Q/A later.
+    gather_data(NextState).
+    % ...
+    % write(get_result()).
 
 %Can repeat logic below with any predicates that we want to save to KB
 save_to_kb(Pred,Ans) :- is_name(Pred), assertz(name(Ans)).
