@@ -28,8 +28,24 @@
 % question([which|L0],Ind) :- noun_phrase(L0,[is|L1],Ind),mp(L1,[],Ind).
 
 %ask(Q,A) :- question(Q,[],A).
+s --> np, vp.
+np --> det, n.
+vp --> v, np.
+vp --> v.
 
-start_chat :- 
+det --> [Word], {lex(Word, det)}.
+n --> [Word], {lex(Word, n)}.
+v --> [Word], {lex(Word, v)}.
+
+lex(the, det).
+lex(a, det).
+lex(woman, n).
+lex(man, n).
+lex(shoots, v).
+
+main :- start_chat.
+
+start_chat :-
     write('I did NOT hit her, I did nooooot- Oh hi. What is your name?'),nl,
     read(X),
     write('Oh hi '),writeq(X),write('!'),
