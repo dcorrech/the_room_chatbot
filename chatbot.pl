@@ -31,6 +31,7 @@ process(10) :-
 %Can repeat logic below with any predicates that we want to save to KB
 save_to_kb(Pred,Ans) :- is_name(Pred), assertz(name(Ans)).
 
+% Question KB
 question(1, "Do you poop?", poop).
 question(2, "Do you eat apples?", apples).
 % Johnny's starting new venture, bad life coach
