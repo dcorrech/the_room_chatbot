@@ -1,5 +1,6 @@
+:- [nlp].
 :- dynamic name/1, sports/1, cheat/1, murder/1, betrayed/1, sex/1. %need to declare every predicate we want to learn as dynamic up here!
-main :- welcome_user, gather_data(1).
+start :- welcome_user, gather_data(1).
 
 welcome_user :- write("It's bullshit. I did NOT hit her, I did nooooot- Oh hi Mark- Wait! What is your name?"),
                             nl,
@@ -12,9 +13,8 @@ welcome_user :- write("It's bullshit. I did NOT hit her, I did nooooot- Oh hi Ma
 
 gather_data(State) :-
     question(State,Question,Pred),
-    write(Question),
-    nl,
-    readln([Ans|_]),
+    write(Question), nl,
+    readln(Input), parsenoun(Input,Ans),
     save_to_kb(Pred,Ans),
     NextState is (State + 1),
     gather_data(NextState).
@@ -79,3 +79,6 @@ lookup_profile(random_party_guy, "Random Party Guy Profile").
 
 % Johnny's starting new venture, bad life coach
 %Asks lots of questions and in the end have a list of diff result(X,Y) with replies
+
+%When it doesn't understand, print YOU'RE TEARING ME APART, NAME --> then requery
+% maybe also how's your sex life
