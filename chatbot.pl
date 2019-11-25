@@ -6,9 +6,9 @@ welcome_user :- write("It's bullshit. I did NOT hit her, I did nooooot- Oh hi Ma
                             nl,
                             readln([X|_]),
                             write("Oh hi "), write(X), write('!'),
-                            nl,
-                            writequit("I have some great news for you. You are my first customer! After those idiots at the bank lead me on for months with a promotion, I have had enough! They betrayed me, they didn't keep their promise, they tricked me, and I don't care anymore! But I do care about you, my loyal customer. After the great tragedy I have experienced in life, I am here to provide you with fantastic life advice. "),
-                            nl,
+                            nl, nl,
+                            write("I have some great news for you. You are my first customer! After those idiots at the bank lead me on for months with a promotion, I have had enough! They betrayed me, they didn't keep their promise, they tricked me, and I don't care anymore! But I do care about you, my loyal customer. After the great tragedy I have experienced in life, I am here to provide you with fantastic life advice. "),
+                            nl, nl,
                             assertz(name(X)).
 
 gather_data(State) :-
