@@ -41,25 +41,25 @@ is_sex(sex).
 
 % Question KB
 question(1, "What is your favorite sport? Mine is football, I love playing catch with Denny!", sports).
-question(2,"Would you ever cheat on your fiance with his best friend? Asking for a friend.",cheat).
-question(3,"Have you ever tried to throw someone off the top off a building?", murder).
-question(4,"Have you ever been betrayed by the one you love most in this world and would give anything for them but they betray you? Not that I know what that is like. This is about you.", betrayed).
+question(2, "Would you ever cheat on your fiance with his best friend? Asking for a friend.",cheat).
+question(3, "Have you ever tried to throw someone off the top off a building?", murder).
+question(4, "Have you ever been betrayed by the one you love most in this world and would give anything for them but they betray you? Not that I know what that is like. This is about you.", betrayed).
 % question(?,"How is your sex life?", sex).
 
-get_results(denny) :- sports('football'),cheat('no'),murder('no'),betrayed('no').
-get_results(johnny):- sports('football'),cheat('no'),murder('no'),betrayed('yes').
-get_results(mark) :- sports('football'),cheat('no'),murder('yes'),betrayed('no').
-get_results(mark) :- sports('football'),cheat('yes'),murder('yes'),betrayed('no').
+get_results(denny) :- sports('football'), cheat('no'), murder('no'), betrayed('no').
+get_results(johnny) :- sports('football'), cheat('no'), murder('no'), betrayed('yes').
+get_results(mark) :- sports('football'), cheat('no'), murder('yes'), betrayed('no').
+get_results(mark) :- sports('football'), cheat('yes'), murder('yes'), betrayed('no').
 
-get_results(peter) :- sports(_),cheat('no'),murder('no'),betrayed('no').
-get_results(claudette) :- sports(_),cheat('no'),murder('no'),betrayed('yes').
-get_results(mark) :- sports(_),cheat('no'),murder('yes'),betrayed('no').
-get_results(lisa):- sports(_),cheat('yes'),murder('no'),betrayed('no').
-get_results(random_party_guy):-sports(_),cheat('yes'),murder('no'),betrayed('yes').
-get_results(lisa) :- sports(_),cheat('yes'),murder('yes'),betrayed('no').
-get_results(chris_r):-sports(_),cheat('no'),murder('yes'),betrayed('yes').
-get_results(chris_r):- sports(_),cheat('yes'),murder('yes'),betrayed('yes').
-get_results(dummy):-sports(_),cheat(_),murder(_),betrayed(_).
+get_results(peter) :- sports(_), cheat('no'), murder('no'), betrayed('no').
+get_results(claudette) :- sports(_), cheat('no'), murder('no'), betrayed('yes').
+get_results(mark) :- sports(_), cheat('no'), murder('yes'), betrayed('no').
+get_results(lisa) :- sports(_), cheat('yes'), murder('no'), betrayed('no').
+get_results(random_party_guy) :-sports(_), cheat('yes'), murder('no'), betrayed('yes').
+get_results(lisa) :- sports(_), cheat('yes'), murder('yes'), betrayed('no').
+get_results(chris_r) :- sports(_), cheat('no'), murder('yes'), betrayed('yes').
+get_results(chris_r) :- sports(_), cheat('yes'), murder('yes'), betrayed('yes').
+get_results(dummy) :- sports(_), cheat(_), murder(_), betrayed(_).
 
 
 % Johnny's starting new venture, bad life coach
