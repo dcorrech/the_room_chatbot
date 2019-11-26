@@ -20,7 +20,7 @@ gather_data(State) :-
     gather_data(NextState).
 
 gather_data(5) :-
-      communicate_test_results.
+      communicate_test_results. %if we want chatbot to keep going after results, need to define another rule for gather data where State > 5.
 
 read_input(Input,_, Ans) :- parsenoun(Input, Ans).
 
@@ -33,7 +33,8 @@ read_input(Input, State, Ans) :-
 communicate_test_results :-
       write("Ha Ha Ha, what a story "), name(Name), write(Name), write("!"),
       nl, get_results(X),
-      write('I got the results of the test back. You are definitely a '), write(X), write("!").
+      write('I got the results of the test back. You are definitely a '), write(X), write("!"),nl,nl,
+      halt(0).
 
 %Can repeat logic below with any predicates that we want to save to KB
 save_to_kb(Pred,Ans) :- is_name(Pred), assertz(name(Ans)).
