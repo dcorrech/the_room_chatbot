@@ -1,13 +1,13 @@
 :- [nlp].
+:- [content].
 :- dynamic name/1, sports/1, cheat/1, murder/1, betrayed/1, sex/1. %need to declare every predicate we want to learn as dynamic up here!
 start :- welcome_user, gather_data(1).
 
-welcome_user :- write("It's bullshit. I did NOT hit her, I did nooooot- Oh hi Mark- Wait! What is your name?"),
-                            nl,
+welcome_user :- write_content(ask_for_name),
                             readln([X|_]),
                             write("Oh hi "), write(X), write('!'),
                             nl, nl,
-                            write("I have some great news for you. You are my first customer! After those idiots at the bank lead me on for months with a promotion, I have had enough! They betrayed me, they didn't keep their promise, they tricked me, and I don't care anymore! But I do care about you, my loyal customer. After the great tragedy I have experienced in life, I am here to provide you with fantastic life advice. "),
+                            write("I have some great news for you. You are my first customer! After those idiots at the bank lead me on for months with a promotion, I have had enough! They betrayed me, they didn't keep their promise, they tricked me, and I don't care anymore! But I do care about you, my loyal customer. After the great tragedy I have experienced in life, I am here to provide you with fantastic life advice."),
                             nl, nl,
                             assertz(name(X)).
 
@@ -37,8 +37,8 @@ gather_data(5) :-
       communicate_test_results.
 
 communicate_test_results :-
-      write("Ha Ha Ha, what a story "), name(Name), write(Name), write("!"),
-      nl, get_results(X),
+      write("Ha Ha Ha, what a story "), name(Name), write(Name), write("!"), nl, nl,
+      get_results(X),
       write('I got the results of the test back. You are definitely a '), write(X), write("!").
 
 %Can repeat logic below with any predicates that we want to save to KB
