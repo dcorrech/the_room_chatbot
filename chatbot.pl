@@ -19,6 +19,20 @@ gather_data(State) :-
     NextState is (State + 1),
     gather_data(NextState).
 
+%read_input(Ans) :-
+%    readln(Input),
+%    parsenoun(Input, Ans).
+    %Clause saying Ans is a proper answer
+    %Exit statement and return Ans to caller.
+
+%read_input(Ans) :-
+%    readln(Input),
+%    parsenoun(Input, Ans),
+    %Clause saying that Ans is invalid
+    %Clause that prints an error-handling response to user "YOu are TeArInG Me ApArT Lisa"
+    %Since clause is invalid, query for another answer.
+%    read_input(Ans).
+
 gather_data(5) :-
       communicate_test_results.
 
