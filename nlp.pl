@@ -40,7 +40,27 @@ lex(girl, n).
 lex(person, n).
 lex(i, n).
 lex(football, n).
+lex(soccer, n).
+lex(volleyball, n).
+lex(hockey, n).
+lex(basketball, n).
+lex(lacrosse, n).
+lex(bowling, n).
+lex(chess, n).
+lex(swimming, n).
+lex(lifting, n).
+lex(wrestling, n).
+lex(tennis, n).
+lex(polo, n).
+lex(curling, n).
+lex(rugby, n).
+lex(hacking, n).
+lex(hunting, n).
+lex(soccer, n).
 lex(building, n).
+lex(house, n).
+lex(apartment, n).
+lex(cellphone, n).
 lex(phone, n).
 lex(sex, n).
 lex(fiance, n).
@@ -50,10 +70,18 @@ lex(husband, n).
 lex(wife, n).
 lex(money, n).
 lex(yes,n).
+lex(yeah, n).
+lex(yep, n).
 lex(no,n).
+lex(never, n).
+lex(nope, n).
 lex(shoots, v).
 lex(is, v).
+lex(am, v).
+lex(are, v).
 lex(love, v).
+lex(like, v).
+lex(adore, v).
 % lex(shoots, v) :- shoot.
 % lex(shoots, v) :- shot.
 % lex(cheat, v) :- cheat.

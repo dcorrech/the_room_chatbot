@@ -49,19 +49,19 @@ question(3, "Have you ever tried to throw someone off the top off a building?", 
 question(4, "Have you ever been betrayed by the one you love most in this world and would give anything for them but they betray you? Not that I know what that is like. This is about you.", betrayed).
 % question(?,"How is your sex life?", sex).
 
-get_results(denny) :- sports('football'), cheat('no'), murder('no'), betrayed('no').
-get_results(johnny) :- sports('football'), cheat('no'), murder('no'), betrayed('yes').
-get_results(mark) :- sports('football'), cheat('no'), murder('yes'), betrayed('no').
-get_results(mark) :- sports('football'), cheat('yes'), murder('yes'), betrayed('no').
+get_results(denny) :- sports(football), cheat(no), murder(no), betrayed(no).
+get_results(johnny) :- sports(football), cheat(no), murder(no), betrayed(yes).
+get_results(mark) :- sports(football), cheat(no), murder(yes), betrayed(no).
+get_results(mark) :- sports(football), cheat(yes), murder(yes), betrayed(no).
 
-get_results(peter) :- sports(_), cheat('no'), murder('no'), betrayed('no').
-get_results(claudette) :- sports(_), cheat('no'), murder('no'), betrayed('yes').
-get_results(mark) :- sports(_), cheat('no'), murder('yes'), betrayed('no').
-get_results(lisa) :- sports(_), cheat('yes'), murder('no'), betrayed('no').
-get_results(random_party_guy) :-sports(_), cheat('yes'), murder('no'), betrayed('yes').
-get_results(lisa) :- sports(_), cheat('yes'), murder('yes'), betrayed('no').
-get_results(chris_r) :- sports(_), cheat('no'), murder('yes'), betrayed('yes').
-get_results(chris_r) :- sports(_), cheat('yes'), murder('yes'), betrayed('yes').
+get_results(peter) :- sports(_), cheat(no), murder(no), betrayed(no).
+get_results(claudette) :- sports(_), cheat(no), murder(no), betrayed(yes).
+get_results(mark) :- sports(_), cheat(no), murder(yes), betrayed(no).
+get_results(lisa) :- sports(_), cheat(yes), murder(no), betrayed(no).
+get_results(random_party_guy) :-sports(_), cheat(yes), murder(no), betrayed(yes).
+get_results(lisa) :- sports(_), cheat(yes), murder(yes), betrayed(no).
+get_results(chris_r) :- sports(_), cheat(no), murder(yes), betrayed(yes).
+get_results(chris_r) :- sports(_), cheat(yes), murder(yes), betrayed(yes).
 get_results(dummy) :- sports(_), cheat(_), murder(_), betrayed(_).
 
 %Profiles: denny, Johnny, mark, peter, claudette, lisa, random_party_guy, chris_r
