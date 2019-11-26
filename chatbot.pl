@@ -2,7 +2,7 @@
 :- dynamic name/1, sports/1, cheat/1, murder/1, betrayed/1, sex/1. %need to declare every predicate we want to learn as dynamic up here!
 start :- welcome_user, gather_data(1).
 
-welcome_user :- write("It's bullshit. I did NOT hit her, I did nooooot- Oh hi Mark- Wait! What is your name?"),
+welcome_user :- write("Its bullshit. I did NOT hit her, I did nooooot- Oh hi Mark- Wait! What is your name?"),
                             nl,
                             readln([X|_]),
                             write("Oh hi "), write(X), write('!'),
@@ -14,27 +14,21 @@ welcome_user :- write("It's bullshit. I did NOT hit her, I did nooooot- Oh hi Ma
 gather_data(State) :-
     question(State,Question,Pred),
     write(Question), nl,
-    readln(Input), parsenoun(Input,Ans),
+    readln(Input), read_input(Input,State, Ans), %parsenoun(Input,Ans)
     save_to_kb(Pred,Ans),
     NextState is (State + 1),
     gather_data(NextState).
 
-%read_input(Ans) :-
-%    readln(Input),
-%    parsenoun(Input, Ans).
-    %Clause saying Ans is a proper answer
-    %Exit statement and return Ans to caller.
-
-%read_input(Ans) :-
-%    readln(Input),
-%    parsenoun(Input, Ans),
-    %Clause saying that Ans is invalid
-    %Clause that prints an error-handling response to user "YOu are TeArInG Me ApArT Lisa"
-    %Since clause is invalid, query for another answer.
-%    read_input(Ans).
-
 gather_data(5) :-
       communicate_test_results.
+
+read_input(Input,_, Ans) :- parsenoun(Input, Ans).
+
+read_input(Input, State, Ans) :-
+   \+ parsenoun(Input, Ans),
+   name(X),
+   nl,write("You are TeArInG Me ApArT, "), write(X), write("! I did not understand what you said! I asked:"),nl,nl,
+   gather_data(State).
 
 communicate_test_results :-
       write("Ha Ha Ha, what a story "), name(Name), write(Name), write("!"),
