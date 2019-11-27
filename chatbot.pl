@@ -3,20 +3,23 @@
 :- dynamic name/1, sports/1, cheat/1, murder/1, betrayed/1, sex/1. %need to declare every predicate we want to learn as dynamic up here!
 
 % Main predicate.
-start :- welcome_user, gather_data(1).
+start :-
+  welcome_user,
+  gather_data(1).
 
 % Welcome user, retrieve name, and then save to dynamic database.
-welcome_user :- retrieve_content(ask_for_name, Y),
-                            write(Y),
-                            nl,
-                            readln([X|_]),
-                            nl,
-                            write("Oh hi "), write(X), write('!'),
-                            nl, nl,
-                            retrieve_content(intro, Z),
-                            write(Z),
-                            nl, nl,
-                            assertz(name(X)).
+welcome_user :-
+    retrieve_content(ask_for_name, Y),
+    write(Y),
+    nl,
+    readln([X|_]),
+    nl,
+    write("Oh hi "), write(X), write('!'),
+    nl, nl,
+    retrieve_content(intro, Z),
+    write(Z),
+    nl, nl,
+    assertz(name(X)).
 
 %Ask user questions and then save answer to dynamic database.
 gather_data(State) :-
@@ -30,10 +33,11 @@ gather_data(State) :-
 
 % Finished asking questions.
 gather_data(5) :-
-      communicate_test_results. %if we want chatbot to keep going after results, need to define another rule for gather data where State > 5.
+    communicate_test_results. %if we want chatbot to keep going after results, need to define another rule for gather data where State > 5.
 
 % Successfully read input. Return Ans.
-read_input(Input,_, Ans) :- parsenoun(Input, Ans).
+read_input(Input,_, Ans) :-
+   parsenoun(Input, Ans).
 
 %Unable to read input. Print error message to user and then re-ask question.
 read_input(Input, State, Ans) :-
@@ -49,21 +53,26 @@ read_input(Input, State, Ans) :-
 
 % Communicates the test results to the user and then exits program.
 communicate_test_results :-
-      nl,
-      write("Ha Ha Ha, what a story "), name(Name), write(Name), write("!"),
-      nl, nl,
-      get_results(X),
-      retrieve_content(start_test_communication, String),
-      write(String),
-      nl, nl,
-      lookup_profile(X, Y), write(Y),
-      nl, nl,
-      write("Would you like to take my amazing test again?"),
-      nl, nl,
-      readln([Z|_]),
-      restart_test(Z).
+    nl,
+    write("Ha Ha Ha, what a story "), name(Name), write(Name), write("!"),
+    nl, nl,
+    get_results(X),
+    retrieve_content(start_test_communication, String),
+    write(String),
+    nl, nl,
+    lookup_profile(X, Y), write(Y),
+    nl, nl,
+    write("Would you like to take my amazing test again?"),
+    nl, nl,
+    readln([Z|_]),
+    restart_test(Z).
 
-restart_test(yes) :- retractall(sports(_)), retractall(cheat(_)), retractall(murder(_)), retractall(betrayed(_)), gather_data(1).
+restart_test(yes) :-
+   retractall(sports(_)),
+   retractall(cheat(_)),
+   retractall(murder(_)),
+   retractall(betrayed(_)),
+   gather_data(1).
 restart_test(no) :- halt(0).
 
 
