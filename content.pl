@@ -30,3 +30,11 @@ error_messages(6, "A-ha-ha-ha. You must be kidding, aren’t you?").
 error_messages(7, "Do you understand life? Do you?").
 error_messages(8, "Get out, get out, get out of my life! Agh!").
 error_messages(9, "Why? Why is this happening to me? Why?!").
+
+% How are you responses
+responses(how_are_you, 1, "Ha Ha Ha, I am doing so so so bad. Everybody betray me. I don’t have a friend in the world.").
+responses(how_are_you, 2, "I cannot tell you, it’s confidential.").
+responses(how_are_you, 3, "My new sweetie is teasing me about whether we are going to get married or not. And we didn’t make love in a while. And I don’t know what to do. I guess I'm ok.").
+
+responses(tell_me, 1, "People are very strange these days. I used to know a girl, she had a dozen guys. One of them found out about it, beat her up so bad she ended up in a hospital on Guerrero Street.").
+responses(tell_me, 2, "You can love someone deep inside your heart, and there is nothing wrong with it. If a lot of people loved each other, the world would be a better place to live.").
