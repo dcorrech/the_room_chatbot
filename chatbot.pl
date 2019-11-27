@@ -1,6 +1,6 @@
 :- [nlp].
 :- [content].
-:- dynamic name/1, sports/1, cheat/1, murder/1, betrayed/1, sex/1. %need to declare every predicate we want to learn as dynamic up here!
+:- dynamic name/1, sports/1, cheat/1, murder/1, betrayed/1. %need to declare every predicate we want to learn as dynamic up here!
 
 % Main predicate.
 start :-
@@ -33,46 +33,7 @@ gather_data(State) :-
 
 % Finished asking questions.
 gather_data(5) :-
-<<<<<<< HEAD
       communicate_test_results.
-
-% Successfully grabbed noun from Input as Ans.
-parse_input(Input,_, Ans) :- parsenoun(Input, Ans).
-
-parse_input(Input,null,Ans) :-
-      s(Tree,Input,[]),
-      search_content(Tree,Ans).
-
-search_content(s(np(_,n(how)),vp(are,np(_,n(you)))), how_are_you).
-search_content(s(np(_,n(how)),vp(are,np(n(you)))), how_are_you).
-search_content(s(np(n('How')),vp(are,np(n(you)))), how_are_you).
-search_content(s(np(n('How')),vp(are,np(_,n(you)))), how_are_you).
-search_content(s(np(_,n(how)),vp(are,np(_,n(things)))), how_are_you).
-search_content(s(np(_,n(how)),vp(are,np(n(things)))), how_are_you).
-search_content(s(np(n('How')),vp(are,np(n(things)))), how_are_you).
-search_content(s(np(n('How')),vp(are,np(_,n(things)))), how_are_you).
-
-% search_content(s(vp('Tell'))).
-
-=======
-    communicate_test_results. %if we want chatbot to keep going after results, need to define another rule for gather data where State > 5.
-
-% Successfully read input. Return Ans.
-read_input(Input,_, Ans) :-
-   parsenoun(Input, Ans).
->>>>>>> 48204a8b4f4fb7dd62995a3f1a19e19addeba495
-
-%Unable to read input. Print error message to user and then re-ask question.
-parse_input(Input, State, Ans) :-
-   \+ parsenoun(Input, Ans),
-   nl,
-   random_between(1, 10, Random),
-   error_messages(Random, ErrorMsg),
-   write(ErrorMsg),
-   nl, nl,
-   write("I did not understand what you said! I asked:"),
-   nl,nl,
-   gather_data(State).
 
 % Communicates the test results to the user and then exits program.
 communicate_test_results :-
@@ -123,7 +84,6 @@ save_to_kb(Pred,Ans) :- is_sports(Pred), assertz(sports(Ans)).
 save_to_kb(Pred,Ans) :- is_cheat(Pred), assertz(cheat(Ans)).
 save_to_kb(Pred,Ans) :- is_murder(Pred), assertz(murder(Ans)).
 save_to_kb(Pred,Ans) :- is_betrayed(Pred), assertz(betrayed(Ans)).
-save_to_kb(Pred,Ans) :- is_sex(Pred), assertz(sex(Ans)).
 
 % Confirms whether something is a name, sports, etc.
 is_name(name).
@@ -131,7 +91,6 @@ is_sports(sports).
 is_cheat(cheat).
 is_murder(murder).
 is_betrayed(betrayed).
-is_sex(sex).
 
 % Possible profile options. The answers given select the profile according to the logic below.
 get_results(denny) :- sports(football), cheat(no), murder(no), betrayed(no).
