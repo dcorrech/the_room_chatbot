@@ -43,7 +43,7 @@ read_input(Input,_, Ans) :-
 read_input(Input, State, Ans) :-
    \+ parsenoun(Input, Ans),
    nl,
-   random_between(1, 9, Random),
+   random_between(1, 10, Random),
    error_messages(Random, ErrorMsg),
    write(ErrorMsg),
    nl, nl,
@@ -73,7 +73,11 @@ restart_test(yes) :-
    retractall(murder(_)),
    retractall(betrayed(_)),
    gather_data(1).
-restart_test(no) :- halt(0).
+restart_test(no) :-
+   write("Well, I still have some time before I need to go pick up flowers for my new sweetie. Let's chat for a bit."),
+   chat_with_johnny.
+
+chat_with_johnny :- halt(0).
 
 
 % Saves predicates to dynamic database.
