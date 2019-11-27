@@ -1,19 +1,22 @@
 :- [nlp].
+:- [content].
 :- dynamic name/1, sports/1, cheat/1, murder/1, betrayed/1, sex/1. %need to declare every predicate we want to learn as dynamic up here!
 start :- welcome_user, gather_data(1).
 
 welcome_user :- write("It's bullshit. I did NOT hit her, I did nooooot- Oh hi Mark- Wait! What is your name?"),
                             nl,
                             readln([X|_]),
+                            nl,
                             write("Oh hi "), write(X), write('!'),
                             nl, nl,
-                            write("I have some great news for you. You are my first customer! After those idiots at the bank lead me on for months with a promotion, I have had enough! They betrayed me, they didn't keep their promise, they tricked me, and I don't care anymore! But I do care about you, my loyal customer. After the great tragedy I have experienced in life, I am here to provide you with fantastic life advice. "),
+                            write("I have some great news for you. You are my first customer! After those idiots at the bank lead me on for months with a promotion, I have had enough! They betrayed me, they didn't keep their promise, they tricked me, and I don't care anymore! But I do care about you, my loyal customer. After the great tragedy I have experienced in life, I am here to provide you with fantastic life advice."),
                             nl, nl,
                             assertz(name(X)).
 
 gather_data(State) :-
     question(State,Question,Pred),
-    write(Question), nl,
+    write(Question),
+    nl,
     readln(Input), read_input(Input,State, Ans), %parsenoun(Input,Ans)
     save_to_kb(Pred,Ans),
     NextState is (State + 1),
@@ -27,13 +30,20 @@ read_input(Input,_, Ans) :- parsenoun(Input, Ans).
 read_input(Input, State, Ans) :-
    \+ parsenoun(Input, Ans),
    name(X),
-   nl,write("You are TeArInG Me ApArT, "), write(X), write("! I did not understand what you said! I asked:"),nl,nl,
+   nl,
+   write("You are TeArInG Me ApArT, "), write(X), write("! I did not understand what you said! I asked:"),
+   nl,nl,
    gather_data(State).
 
 communicate_test_results :-
+      nl,
       write("Ha Ha Ha, what a story "), name(Name), write(Name), write("!"),
-      nl, get_results(X),
-      write('I got the results of the test back. You are definitely a '), write(X), write("!"),nl,nl,
+      nl, nl,
+      get_results(X),
+      write('I have divined your character, personality, and future!'),
+      nl, nl,
+      lookup_profile(X, Y), write(Y),
+      nl, nl,
       halt(0).
 
 %Can repeat logic below with any predicates that we want to save to KB
@@ -71,23 +81,4 @@ get_results(random_party_guy) :-sports(_), cheat(yes), murder(no), betrayed(yes)
 get_results(lisa) :- sports(_), cheat(yes), murder(yes), betrayed(no).
 get_results(chris_r) :- sports(_), cheat(no), murder(yes), betrayed(yes).
 get_results(chris_r) :- sports(_), cheat(yes), murder(yes), betrayed(yes).
-get_results(dummy) :- sports(_), cheat(_), murder(_), betrayed(_).
-
-%Profiles: denny, Johnny, mark, peter, claudette, lisa, random_party_guy, chris_r
-
-lookup_profile(denny, "Dennys profile.").
-lookup_profile(johnny, "Johnnys profile.").
-lookup_profile(mark,"Marks profile.").
-lookup_profile(lisa,  "Lisas profile.").
-lookup_profile(peter, "Peters profile").
-lookup_profile(claudette, "Claudettes profile").
-lookup_profile(chris_r, "Chris_R profile").
-lookup_profile(random_party_guy, "Random Party Guy Profile").
-
-
-
-% Johnny's starting new venture, bad life coach
-%Asks lots of questions and in the end have a list of diff result(X,Y) with replies
-
-%When it doesn't understand, print YOU'RE TEARING ME APART, NAME --> then requery
-% maybe also how's your sex life
+get_results(random_party_guy) :- sports(_), cheat(_), murder(_), betrayed(_).
