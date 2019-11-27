@@ -3,20 +3,23 @@
 :- dynamic name/1, sports/1, cheat/1, murder/1, betrayed/1, sex/1. %need to declare every predicate we want to learn as dynamic up here!
 
 % Main predicate.
-start :- welcome_user, gather_data(1).
+start :-
+  welcome_user,
+  gather_data(1).
 
 % Welcome user, retrieve name, and then save to dynamic database.
-welcome_user :- retrieve_content(ask_for_name, Y),
-                            write(Y),
-                            nl,
-                            readln([X|_]),
-                            nl,
-                            write("Oh hi "), write(X), write('!'),
-                            nl, nl,
-                            retrieve_content(intro, Z),
-                            write(Z),
-                            nl, nl,
-                            assertz(name(X)).
+welcome_user :-
+    retrieve_content(ask_for_name, Y),
+    write(Y),
+    nl,
+    readln([X|_]),
+    nl,
+    write("Oh hi "), write(X), write('!'),
+    nl, nl,
+    retrieve_content(intro, Z),
+    write(Z),
+    nl, nl,
+    assertz(name(X)).
 
 %Ask user questions and then save answer to dynamic database.
 gather_data(State) :-
@@ -30,6 +33,7 @@ gather_data(State) :-
 
 % Finished asking questions.
 gather_data(5) :-
+<<<<<<< HEAD
       communicate_test_results.
 
 % Successfully grabbed noun from Input as Ans.
@@ -50,12 +54,19 @@ search_content(s(np(n('How')),vp(are,np(_,n(things)))), how_are_you).
 
 % search_content(s(vp('Tell'))).
 
+=======
+    communicate_test_results. %if we want chatbot to keep going after results, need to define another rule for gather data where State > 5.
+
+% Successfully read input. Return Ans.
+read_input(Input,_, Ans) :-
+   parsenoun(Input, Ans).
+>>>>>>> 48204a8b4f4fb7dd62995a3f1a19e19addeba495
 
 %Unable to read input. Print error message to user and then re-ask question.
 parse_input(Input, State, Ans) :-
    \+ parsenoun(Input, Ans),
    nl,
-   random_between(1, 9, Random),
+   random_between(1, 10, Random),
    error_messages(Random, ErrorMsg),
    write(ErrorMsg),
    nl, nl,
@@ -69,12 +80,27 @@ communicate_test_results :-
       write("Ha Ha Ha, what a story "), name(Name), write(Name), write("!"),
       nl, nl,
       get_results(X),
-      write('I have divined your character, personality, and future!'),
+      retrieve_content(start_test_communication, String),
+      write(String),
       nl, nl,
       lookup_profile(X, Y), write(Y),
       nl, nl,
-      write("So what else do you wanna talk about?"),
-      chat.
+      write("Would you like to take my amazing test again?"),
+      nl, nl,
+      readln([Z|_]),
+      restart_test(Z).
+
+restart_test(yes) :-
+   retractall(sports(_)),
+   retractall(cheat(_)),
+   retractall(murder(_)),
+   retractall(betrayed(_)),
+   gather_data(1).
+restart_test(no) :-
+   write("Well, I still have some time before I need to go pick up flowers for my new sweetie. Let's chat for a bit."),
+   chat_with_johnny.
+
+chat_with_johnny :- halt(0).
 
 chat :- 
       repeat,
