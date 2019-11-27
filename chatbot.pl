@@ -23,20 +23,36 @@ gather_data(State) :-
     question(State,Question,Pred),
     write(Question),
     nl,
-    readln(Input), read_input(Input,State, Ans), %parsenoun(Input,Ans)
+    readln(Input), parse_input(Input,State, Ans), %parsenoun(Input,Ans)
     save_to_kb(Pred,Ans),
     NextState is (State + 1),
     gather_data(NextState).
 
 % Finished asking questions.
 gather_data(5) :-
-      communicate_test_results. %if we want chatbot to keep going after results, need to define another rule for gather data where State > 5.
+      communicate_test_results.
 
-% Successfully read input. Return Ans.
-read_input(Input,_, Ans) :- parsenoun(Input, Ans).
+% Successfully grabbed noun from Input as Ans.
+parse_input(Input,_, Ans) :- parsenoun(Input, Ans).
+
+parse_input(Input,null,Ans) :-
+      s(Tree,Input,[]),
+      search_content(Tree,Ans).
+
+search_content(s(np(_,n(how)),vp(are,np(_,n(you)))), how_are_you).
+search_content(s(np(_,n(how)),vp(are,np(n(you)))), how_are_you).
+search_content(s(np(n('How')),vp(are,np(n(you)))), how_are_you).
+search_content(s(np(n('How')),vp(are,np(_,n(you)))), how_are_you).
+search_content(s(np(_,n(how)),vp(are,np(_,n(things)))), how_are_you).
+search_content(s(np(_,n(how)),vp(are,np(n(things)))), how_are_you).
+search_content(s(np(n('How')),vp(are,np(n(things)))), how_are_you).
+search_content(s(np(n('How')),vp(are,np(_,n(things)))), how_are_you).
+
+% search_content(s(vp('Tell'))).
+
 
 %Unable to read input. Print error message to user and then re-ask question.
-read_input(Input, State, Ans) :-
+parse_input(Input, State, Ans) :-
    \+ parsenoun(Input, Ans),
    nl,
    random_between(1, 9, Random),
@@ -57,6 +73,22 @@ communicate_test_results :-
       nl, nl,
       lookup_profile(X, Y), write(Y),
       nl, nl,
+      write("So what else do you wanna talk about?"),
+      chat.
+
+chat :- 
+      repeat,
+      readin(Input), parse_input(Input,null,Content),
+      reply(Content, Output),
+      write(Output).
+
+reply(bye,_) :-
+      write("Why? Why? Why? Why is this happening to me! I can't deal with this any more! It's over! It's over!"),
+      nl, write("Get out of my life, "), name(Name), write(Name), write("!"),
+      halt(0).
+reply(quit,_) :-
+      write("Why? Why? Why? Why is this happening to me! I can't deal with this any more! It's over! It's over!"),
+      nl, write("Get out of my life, "), name(Name), write(Name), write("!"),
       halt(0).
 
 % Saves predicates to dynamic database.

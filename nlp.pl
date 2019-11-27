@@ -22,23 +22,37 @@ det(det(Word)) --> [Word], {lex(Word, det)}.
 n(n(Word)) --> [Word], {lex(Word, n)}.
 v(v(Word)) --> [Word], {lex(Word, v)}.
 
-parsenoun(Input,Ans) :- s(Tree,Input,[]), search(Tree,Ans).
+parsenoun(Input,Ans) :- s(Tree,Input,[]), search_noun(Tree,Ans).
 
-search(s(np(_,n(N)),_), N) :- dif(N,'I').
-search(s(np(n(N)),_), N) :- dif(N,'I').
-search(s(np(n(N))), N) :- dif(N,'I').
-search(s(_,vp(_,NP)),N) :- search(NP,N).
-search(np(_,n(N)),N) :- dif(N,'I').
-search(np(n(N)),N) :- dif(N,'I').
+search_noun(s(np(_,n(N)),_), N) :- dif(N,'I').
+search_noun(s(np(n(N)),_), N) :- dif(N,'I').
+search_noun(s(np(n(N))), N) :- dif(N,'I').
+search_noun(s(_,vp(_,NP)),N) :- search_noun(NP,N).
+search_noun(np(_,n(N)),N) :- dif(N,'I').
+search_noun(np(n(N)),N) :- dif(N,'I').
 
 lex(the, det).
+lex('The', det).
 lex(a, det).
+lex('Who', n).
+lex('What', n).
+lex('Where', n).
+lex('When', n).
+lex('Why', n).
+lex('How', n).
+lex(who, n).
+lex(what, n).
+lex(where, n).
+lex(when, n).
+lex(why, n).
+lex(how, n).
 lex(woman, n).
 lex(man, n).
 lex(boy, n).
 lex(girl, n).
 lex(person, n).
 lex(i, n).
+lex('I', n).
 lex(football, n).
 lex(soccer, n).
 lex(volleyball, n).
@@ -70,17 +84,25 @@ lex(husband, n).
 lex(wife, n).
 lex(money, n).
 lex(yes,n).
-lex(y,n).
+lex('Yes',n).
 lex(yeah, n).
+lex('Yeah', n).
 lex(yep, n).
 lex(no,n).
+lex('No', n).
 lex(nah,n).
 lex(never, n).
+lex('Never', n).
 lex(nope, n).
+lex(things,n).
+lex(thing, n).
 lex(shoots, v).
 lex(is, v).
-lex(am, v).
+lex('Is', v).
 lex(are, v).
+lex('Are', v).
+lex(am, v).
+lex('Am', v).
 lex(was, v).
 lex(love, v).
 lex(like, v).
@@ -90,6 +112,10 @@ lex(will, v).
 lex(do, v).
 lex(does, v).
 lex(did, v).
+lex(tell, v).
+lex(can, v).
+lex('Tell', v).
+lex('Can', v).
 % lex(shoots, v) :- shoot.
 % lex(shoots, v) :- shot.
 % lex(cheat, v) :- cheat.
@@ -98,3 +124,7 @@ lex(did, v).
 % lex(betray, v) :- betray.
 % lex(betray, v) :- betrays.
 % lex(betray, v) :- betrayed.
+
+%Who is... charaacters, if not characters, then he says he has no idea who that is
+% Do you like....?
+%Tell me... and thenhe says something wacky
