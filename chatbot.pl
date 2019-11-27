@@ -2,7 +2,7 @@
 :- dynamic name/1, sports/1, cheat/1, murder/1, betrayed/1, sex/1. %need to declare every predicate we want to learn as dynamic up here!
 start :- welcome_user, gather_data(1).
 
-welcome_user :- write("Its bullshit. I did NOT hit her, I did nooooot- Oh hi Mark- Wait! What is your name?"),
+welcome_user :- write("It's bullshit. I did NOT hit her, I did nooooot- Oh hi Mark- Wait! What is your name?"),
                             nl,
                             readln([X|_]),
                             write("Oh hi "), write(X), write('!'),
@@ -51,7 +51,7 @@ is_murder(murder).
 is_betrayed(betrayed).
 is_sex(sex).
 
-% Question KB
+% DB
 question(1, "What is your favorite sport? Mine is football, I love playing catch with Denny!", sports).
 question(2, "Would you ever cheat on your fiance with his best friend? Asking for a friend.",cheat).
 question(3, "Have you ever tried to throw someone off the top off a building?", murder).

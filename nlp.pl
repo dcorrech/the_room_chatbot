@@ -33,55 +33,63 @@ search(np(n(N)),N) :- dif(N,'I').
 
 lex(the, det).
 lex(a, det).
-lex(woman, woman, n).
-lex(man, man, n).
-lex(boy, boy, n).
-lex(girl, girl, n).
-lex(person, person, n).
-lex(i, i, n).
-lex(football, football, n).
-lex(soccer, soccer, n).
-lex(volleyball, volleyball, n).
-lex(hockey, hockey, n).
-lex(basketball, basketball, n).
-lex(lacrosse, lacrosse, n).
-lex(bowling, bowling, n).
-lex(chess, chess, n).
-lex(swimming, swimming, n).
-lex(lifting, lifting, n).
-lex(wrestling, wrestling, n).
-lex(tennis, tennis, n).
-lex(polo, polo, n).
-lex(curling, curling, n).
-lex(rugby, rugby, n).
-lex(hacking, hacking, n).
-lex(hunting, hunting, n).
-lex(soccer, soccer, n).
-lex(building, building, n).
-lex(house, house, n).
-lex(apartment, apartment, n).
-lex(phone, cellphone, n).
-lex(phone, phone, n).
-lex(sex, sex, n).
-lex(fiance, fiance, n).
-lex(girlfriend, girlfriend, n).
-lex(boyfriend, boyfriend, n).
-lex(husband, husband, n).
-lex(wife, wife, n).
-lex(money, money, n).
-lex(yes, yes, n).
-lex(yes, yeah, n).
-lex(yes, yep, n).
-lex(no, no,n).
-lex(no, never, n).
-lex(no, nope, n).
-lex(shoots, shoots, v).
-lex(is, is, v).
-lex(am, am, v).
-lex(are, are, v).
-lex(love, love, v).
-lex(like, like, v).
-lex(adore, adore, v).
+lex(woman, n).
+lex(man, n).
+lex(boy, n).
+lex(girl, n).
+lex(person, n).
+lex(i, n).
+lex(football, n).
+lex(soccer, n).
+lex(volleyball, n).
+lex(hockey, n).
+lex(basketball, n).
+lex(lacrosse, n).
+lex(bowling, n).
+lex(chess, n).
+lex(swimming, n).
+lex(lifting, n).
+lex(wrestling, n).
+lex(tennis, n).
+lex(polo, n).
+lex(curling, n).
+lex(rugby, n).
+lex(hacking, n).
+lex(hunting, n).
+lex(soccer, n).
+lex(building, n).
+lex(house, n).
+lex(apartment, n).
+lex(cellphone, n).
+lex(phone, n).
+lex(sex, n).
+lex(fiance, n).
+lex(girlfriend, n).
+lex(boyfriend, n).
+lex(husband, n).
+lex(wife, n).
+lex(money, n).
+lex(yes,n).
+lex(y,n).
+lex(yeah, n).
+lex(yep, n).
+lex(no,n).
+lex(nah,n).
+lex(never, n).
+lex(nope, n).
+lex(shoots, v).
+lex(is, v).
+lex(am, v).
+lex(are, v).
+lex(was, v).
+lex(love, v).
+lex(like, v).
+lex(adore, v).
+lex(would, v). % not always a verb...
+lex(will, v).
+lex(do, v).
+lex(does, v).
+lex(did, v).
 % lex(shoots, v) :- shoot.
 % lex(shoots, v) :- shot.
 % lex(cheat, v) :- cheat.
