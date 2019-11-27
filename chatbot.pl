@@ -38,9 +38,12 @@ read_input(Input,_, Ans) :- parsenoun(Input, Ans).
 %Unable to read input. Print error message to user and then re-ask question.
 read_input(Input, State, Ans) :-
    \+ parsenoun(Input, Ans),
-   name(X),
    nl,
-   write("You are TeArInG Me ApArT, "), write(X), write("! I did not understand what you said! I asked:"),
+   random_between(1, 9, Random),
+   error_messages(Random, ErrorMsg),
+   write(ErrorMsg),
+   nl, nl,
+   write("I did not understand what you said! I asked:"),
    nl,nl,
    gather_data(State).
 

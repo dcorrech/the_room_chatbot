@@ -19,3 +19,13 @@ lookup_profile(random_party_guy, "Flashing out of the action just as quickly as 
 % Used to retrieve strings to print.
 retrieve_content(ask_for_name, "It's bullshit. I did NOT hit her, I did nooooot- Oh hi Mark- Wait! What is your name?").
 retrieve_content(intro, "I have some great news for you. You are my first customer! After those idiots at the bank lead me on for months with a promotion, I have had enough! They betrayed me, they didn't keep their promise, they tricked me, and I don't care anymore! But I do care about you, my loyal customer. After the great tragedy I have experienced in life, I am here to provide you with fantastic life advice.").
+
+error_messages(1, "YOU ARE TEARING ME APART!").
+error_messages(2, "So, how's your sex life?").
+error_messages(3, "Hi, doggie!").
+error_messages(4, "I'm tired, I'm wasted, I love you darling!").
+error_messages(5, "Do you, do you have some secrets? Why don’t you tell me?").
+error_messages(6, "A-ha-ha-ha. You must be kidding, aren’t you?").
+error_messages(7, "Do you understand life? Do you?").
+error_messages(8, "Get out, get out, get out of my life! Agh!").
+error_messages(9, "Why? Why is this happening to me? Why?!").

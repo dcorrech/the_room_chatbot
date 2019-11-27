@@ -12,15 +12,15 @@ s(s(NP,VP))  -->  np(NP),vp(VP).
 s(s(NP))  -->  np(NP).
 s(s(VP))  -->  vp(VP).
 
-np(np(DET,N))  -->  det(DET),n(N). 
+np(np(DET,N))  -->  det(DET),n(N).
 np(np(N))  -->  n(N).
 
 vp(vp(V,NP))  -->  v(V),np(NP).
 vp(vp(V))  -->  v(V).
 
 det(det(Word)) --> [Word], {lex(Word, det)}.
-n(n(Word)) --> [Word], {lex(Word, _, n)}.
-v(v(Word)) --> [Word], {lex(Word, _, v)}.
+n(n(Word)) --> [Word], {lex(Word, n)}.
+v(v(Word)) --> [Word], {lex(Word, v)}.
 
 parsenoun(Input,Ans) :- s(Tree,Input,[]), search(Tree,Ans).
 
