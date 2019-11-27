@@ -40,7 +40,7 @@ responses(how_are_you, 3, "My new sweetie is teasing me about whether we are goi
 % Tell me X responses
 responses(tell_me, 1, "People are very strange these days. I used to know a girl, she had a dozen guys. One of them found out about it, beat her up so bad she ended up in a hospital on Guerrero Street.").
 responses(tell_me, 2, "You can love someone deep inside your heart, and there is nothing wrong with it. If a lot of people loved each other, the world would be a better place to live.").
-responses(tell_me, 3 "Okay. I'm going at it with my sweetie, and um, I get out of there as fast as possible, you know, I get my pants, I get my shirt, and I get out of there. And then about halfway down the stairs, I realize that I have misplaced, I’ve forgotten something. Um, my underwear. So I come back to get it, I pretend that I need a book, you know, I’m like looking for my book, and then I reach and put the underwear in my pocket, sort of slide out real quick. Well her mom, she saw it sticking out of my pocket, so she pulls it out, and she’s, uh, showing everybody me underwears.").
+responses(tell_me, 3, "Okay. I'm going at it with my sweetie, and um, I get out of there as fast as possible, you know, I get my pants, I get my shirt, and I get out of there. And then about halfway down the stairs, I realize that I have misplaced, I’ve forgotten something. Um, my underwear. So I come back to get it, I pretend that I need a book, you know, I’m like looking for my book, and then I reach and put the underwear in my pocket, sort of slide out real quick. Well her mom, she saw it sticking out of my pocket, so she pulls it out, and she’s, uh, showing everybody me underwears.").
 
 % Bye responses
 responses(bye, 1, "Bye bye, my precious.").
@@ -60,4 +60,4 @@ responses(who_is, chris_r, "Who? Oh, you mean that guy who threatened to kill De
 % Do you like
 responses(do_you_like, football, "I love football!").
 responses(do_you_like, pizza, "Pizza is great, huh?").
-responses(do you_like, alcohol, "You know I don't drink alcohol, silly.").
+responses(do_you_like, alcohol, "You know I don't drink alcohol, silly.").

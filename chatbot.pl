@@ -63,7 +63,7 @@ restart_test(no) :-
 
 chat_with_johnny :- halt(0).
 
-chat :- 
+chat :-
       repeat,
       readin(Input), parse_input(Input,null,Content),
       reply(Content, Output),
