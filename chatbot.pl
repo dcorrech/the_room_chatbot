@@ -57,7 +57,14 @@ communicate_test_results :-
       nl, nl,
       lookup_profile(X, Y), write(Y),
       nl, nl,
-      halt(0).
+      write("Would you like to take my amazing test again?"),
+      nl, nl,
+      readln([Z|_]),
+      restart_test(Z).
+
+restart_test(yes) :- retractall(sports(_)), retractall(cheat(_)), retractall(murder(_)), retractall(betrayed(_)), gather_data(1).
+restart_test(no) :- halt(0).
+
 
 % Saves predicates to dynamic database.
 save_to_kb(Pred,Ans) :- is_name(Pred), assertz(name(Ans)).
