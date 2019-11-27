@@ -33,15 +33,11 @@ gather_data(State) :-
 
 % Finished asking questions.
 gather_data(5) :-
-<<<<<<< HEAD
       communicate_test_results.
 
-% Successfully grabbed noun from Input as Ans.
-parse_input(Input,_, Ans) :- parsenoun(Input, Ans).
-
-parse_input(Input,null,Ans) :-
-      s(Tree,Input,[]),
-      search_content(Tree,Ans).
+% Successfully read input. Return Ans.
+read_input(Input,_, Ans) :-
+   parsenoun(Input, Ans).
 
 search_content(s(np(_,n(how)),vp(are,np(_,n(you)))), how_are_you).
 search_content(s(np(_,n(how)),vp(are,np(n(you)))), how_are_you).
@@ -54,14 +50,6 @@ search_content(s(np(n('How')),vp(are,np(_,n(things)))), how_are_you).
 
 % search_content(s(vp('Tell'))).
 
-=======
-    communicate_test_results. %if we want chatbot to keep going after results, need to define another rule for gather data where State > 5.
-
-% Successfully read input. Return Ans.
-read_input(Input,_, Ans) :-
-   parsenoun(Input, Ans).
->>>>>>> 48204a8b4f4fb7dd62995a3f1a19e19addeba495
-
 %Unable to read input. Print error message to user and then re-ask question.
 parse_input(Input, State, Ans) :-
    \+ parsenoun(Input, Ans),
@@ -73,6 +61,13 @@ parse_input(Input, State, Ans) :-
    write("I did not understand what you said! I asked:"),
    nl,nl,
    gather_data(State).
+
+% Successfully grabbed noun from Input as Ans.
+parse_input(Input,_, Ans) :- parsenoun(Input, Ans).
+
+parse_input(Input,null,Ans) :-
+      s(Tree,Input,[]),
+      search_content(Tree,Ans).
 
 % Communicates the test results to the user and then exits program.
 communicate_test_results :-
@@ -102,7 +97,7 @@ restart_test(no) :-
 
 chat_with_johnny :- halt(0).
 
-chat :- 
+chat :-
       repeat,
       readin(Input), parse_input(Input,null,Content),
       reply(Content, Output),
