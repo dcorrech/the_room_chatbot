@@ -1,6 +1,6 @@
 :- [nlp].
 
-% Questions to ask the user
+% DB
 question(1, "What is your favorite sport? Mine is football, I love playing catch with Denny!", sports).
 question(2, "Would you ever cheat on your fiance with his best friend? Asking for a friend.",cheat).
 question(3, "Have you ever tried to throw someone off the top off a building?", murder).
