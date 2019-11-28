@@ -52,38 +52,44 @@ parse_input([bye|_],_,bye).
 parse_input([quit|_],_,quit).
 parse_input([help|_],_,help).
 parse_input([how,are,you|_],_,how_are_you).
-parse_input(Input,Object,Ans) :-
-    s(Tree,Input,[]),
-    search_content(Tree,Ans),
-    search_noun(Tree,Object).
+parse_input([how,are,things|_],_,how_are_you).
+parse_input(['How',are,you|_],_,how_are_you).
+parse_input(['How',are,things|_],_,how_are_you).
+parse_input([tell,me|_],_,tell_me).
+parse_input(['Tell',me],_,tell_me).
+parse_input([who,is|T],Object,who_is) :- parsenoun(T,Object).
+parse_input(['Who',is|T],Object,who_is) :- parsenoun(T,Object).
+parse_input([do,you,like|T],Object,do_you_like) :- parsenoun(T,Object).
+parse_input(['Do',you,like|T],Object,do_you_like) :- parsenoun(T,Object).
+
+% parse_input(Input,Object,Ans) :-
+%     s(Tree,Input,[]),
+%     search_content(Tree,Ans),
+%     search_noun(Tree,Object).
 parse_input(_, _, error).
-
-
-
-% search_content(s(np(_,n(how)),vp(are,np(_,n(you)))), how_are_you).
-% search_content(s(np(_,n(how)),vp(are,np(n(you)))), how_are_you).
-% search_content(s(np(n(how)),vp(are,np(n(you)))), how_are_you).
-% search_content(s(np(n(how)),vp(are,np(_,n(you)))), how_are_you).
-% search_content(s(np(n('How')),vp(are,np(n(you)))), how_are_you).
-% search_content(s(np(n('How')),vp(are,np(_,n(you)))), how_are_you).
-% search_content(s(np(_,n(how)),vp(are,np(_,n(things)))), how_are_you).
-% search_content(s(np(_,n(how)),vp(are,np(n(things)))), how_are_you).
-% search_content(s(np(n('How')),vp(are,np(n(things)))), how_are_you).
-% search_content(s(np(n('How')),vp(are,np(_,n(things)))), how_are_you).
-
-% search_content(s(vp('Tell'),_), tell_me).
-% search_content(s(_,vp(v(tell),_)), tell_me).
-
-% search_content(s(np(_,n(who)),vp(is,_)), who_is).
-% search_content(s(np(_,n(who)),vp(is,_)), who_is).
-% search_content(s(np(n('Who')),vp(is,_)), who_is).
-% search_content(s(np(n('Who')),vp(is,_)), who_is).
-
 % The lexicon of all the words accepted by our chat bot.
 % Each lex entrie includes the word and its type.
 lex(the, det).
 lex('The', det).
 lex(a, det).
+lex(lisa,n).
+lex('Lisa',n).
+lex(mark,n).
+lex('Mark',n).
+lex(peter,n).
+lex('Peter',n).
+lex(chris_r,n).
+lex('Chris R',n).
+lex(claudette,n).
+lex('Claudette',n).
+lex(mike,n).
+lex('Mike',n).
+lex(michelle,n).
+lex('Michelle',n).
+lex(denny,n).
+lex('Denny',n).
+lex(johnny,n).
+lex('Johnny',n).
 lex('Who', n).
 lex('What', n).
 lex('Where', n).
@@ -149,6 +155,7 @@ lex(thing, n).
 lex(bye, n).
 lex(goodbye, n).
 lex(quit, n).
+lex(pizza, n).
 lex(help, n).
 lex(shoots, v).
 lex(is, v).
