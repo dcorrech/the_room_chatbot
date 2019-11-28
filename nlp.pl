@@ -22,6 +22,25 @@ det(det(Word)) --> [Word], {lex(Word, det)}.
 n(n(Word)) --> [Word], {lex(Word, n)}.
 v(v(Word)) --> [Word], {lex(Word, v)}.
 
+% Successfully grabbed noun from Input as Ans.
+parse_input(Input,_, Ans) :- parsenoun(Input, Ans).
+
+parse_input(Input,null,Ans) :-
+      s(Tree,Input,[]),
+      search_content(Tree,Ans).
+
+%Unable to read input. Print error message to user and then re-ask question.
+parse_input(Input, State, Ans) :-
+   \+ parsenoun(Input, Ans),
+   nl,
+   random_between(1, 10, Random),
+   error_messages(Random, ErrorMsg),
+   write(ErrorMsg),
+   nl, nl,
+   write("I did not understand what you said! I asked:"),
+   nl,nl,
+   gather_data(State).
+
 parsenoun(Input,Ans) :- s(Tree,Input,[]), search_noun(Tree,Ans).
 
 search_noun(s(np(_,n(N)),_), N) :- dif(N,'I').
@@ -30,6 +49,23 @@ search_noun(s(np(n(N))), N) :- dif(N,'I').
 search_noun(s(_,vp(_,NP)),N) :- search_noun(NP,N).
 search_noun(np(_,n(N)),N) :- dif(N,'I').
 search_noun(np(n(N)),N) :- dif(N,'I').
+
+search_content(s(np(_,n(how)),vp(are,np(_,n(you)))), how_are_you).
+search_content(s(np(_,n(how)),vp(are,np(n(you)))), how_are_you).
+search_content(s(np(n('How')),vp(are,np(n(you)))), how_are_you).
+search_content(s(np(n('How')),vp(are,np(_,n(you)))), how_are_you).
+search_content(s(np(_,n(how)),vp(are,np(_,n(things)))), how_are_you).
+search_content(s(np(_,n(how)),vp(are,np(n(things)))), how_are_you).
+search_content(s(np(n('How')),vp(are,np(n(things)))), how_are_you).
+search_content(s(np(n('How')),vp(are,np(_,n(things)))), how_are_you).
+
+search_content(s(vp('Tell'),_), tell_me).
+search_content(s(_,vp(v(tell),_)), tell_me).
+
+search_content(s(np(_,n(who)),vp(is,_)), who_is).
+search_content(s(np(_,n(who)),vp(is,_)), who_is).
+search_content(s(np(n('Who')),vp(is,_)), who_is).
+search_content(s(np(n('Who')),vp(is,_)), who_is).
 
 lex(the, det).
 lex('The', det).
