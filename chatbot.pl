@@ -26,7 +26,7 @@ gather_data(State) :-
     question(State,Question,Pred),
     write(Question),
     nl,
-    readln(Input), parse_input(Input,State, Ans), %parsenoun(Input,Ans)
+    readln(Input), search_input(Input,State, Ans), %parsenoun(Input,Ans)
     save_to_kb(Pred,Ans),
     NextState is (State + 1),
     gather_data(NextState).
@@ -58,22 +58,20 @@ restart_test(yes) :-
    retractall(betrayed(_)),
    gather_data(1).
 restart_test(no) :-
-   write("Well, I still have some time before I need to go pick up flowers for my new sweetie. Let's chat for a bit."),
-   chat_with_johnny.
-
-chat_with_johnny :- halt(0).
+   write("Well, I still have some time before I need to go pick up flowers for my new sweetie. Let's chat for a bit. Do you have any questions for me?"),
+   chat.
 
 chat :-
-      repeat,
-      readin(Input), parse_input(Input,null,Content),
-      reply(Content, Output),
+      repeat, nl,
+      readln(Input), parse_input(Input,Object,Content),
+      reply(Content, Object, Output),
       write(Output).
 
-reply(bye,_) :-
+reply(bye,_,_) :-
       write("Why? Why? Why? Why is this happening to me! I can't deal with this any more! It's over! It's over!"),
       nl, write("Get out of my life, "), name(Name), write(Name), write("!"),
       halt(0).
-reply(quit,_) :-
+reply(quit,_,_) :-
       write("Why? Why? Why? Why is this happening to me! I can't deal with this any more! It's over! It's over!"),
       nl, write("Get out of my life, "), name(Name), write(Name), write("!"),
       halt(0).
