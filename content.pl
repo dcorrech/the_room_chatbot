@@ -62,3 +62,5 @@ retrieve_content(who_is, chris_r, "Who? Oh, you mean that guy who threatened to 
 retrieve_content(do_you_like, football, "I love football!").
 retrieve_content(do_you_like, pizza, "Pizza is great, huh?").
 retrieve_content(do_you_like, alcohol, "You know I don't drink alcohol, silly.").
+
+retrieve_content(help, "Ha Ha Ha, you' don't know hot to talk to Johnny. Oh you funny guy. Say 'bye' or 'quit' to me if you want to leave our wonderful chat. Ask me 'how are you' to hear how I am doing. Ask me 'tell me' if you want to hear a story from Johnny. Ask me 'who is X' to let me tell you who my friends and enemies are. Ask me 'do you like X' to let me tell you what I like.").
