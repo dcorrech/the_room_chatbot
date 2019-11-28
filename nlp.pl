@@ -48,29 +48,34 @@ search_noun(np(n(N)),N) :- dif(N,'I'), dif(N,'How'), dif(N,'Who'), dif(N,'Where'
 search_noun(vp(_,n(N)),N) :- dif(N,'I'), dif(N,'How'), dif(N,'Who'), dif(N,'Where'), dif(N,'How'), dif(N,'Why').
 search_noun(vp(_,NP),N) :- search_noun(NP,N).
 
+parse_input([bye],_,bye).
+parse_input([quit],_,quit).
+parse_input([how,are,you|_],_,how_are_you).
+parse_input([how,are,things|_],_,how_are_you).
+parse_input([],_,how_are_you).
 parse_input(Input,Object,Ans) :-
     s(Tree,Input,[]),
     search_content(Tree,Ans),
     search_noun(Tree,Object).
 
-search_content(s(np(_,n(how)),vp(are,np(_,n(you)))), how_are_you).
-search_content(s(np(_,n(how)),vp(are,np(n(you)))), how_are_you).
-search_content(s(np(n(how)),vp(are,np(n(you)))), how_are_you).
-search_content(s(np(n(how)),vp(are,np(_,n(you)))), how_are_you).
-search_content(s(np(n('How')),vp(are,np(n(you)))), how_are_you).
-search_content(s(np(n('How')),vp(are,np(_,n(you)))), how_are_you).
-search_content(s(np(_,n(how)),vp(are,np(_,n(things)))), how_are_you).
-search_content(s(np(_,n(how)),vp(are,np(n(things)))), how_are_you).
-search_content(s(np(n('How')),vp(are,np(n(things)))), how_are_you).
-search_content(s(np(n('How')),vp(are,np(_,n(things)))), how_are_you).
+% search_content(s(np(_,n(how)),vp(are,np(_,n(you)))), how_are_you).
+% search_content(s(np(_,n(how)),vp(are,np(n(you)))), how_are_you).
+% search_content(s(np(n(how)),vp(are,np(n(you)))), how_are_you).
+% search_content(s(np(n(how)),vp(are,np(_,n(you)))), how_are_you).
+% search_content(s(np(n('How')),vp(are,np(n(you)))), how_are_you).
+% search_content(s(np(n('How')),vp(are,np(_,n(you)))), how_are_you).
+% search_content(s(np(_,n(how)),vp(are,np(_,n(things)))), how_are_you).
+% search_content(s(np(_,n(how)),vp(are,np(n(things)))), how_are_you).
+% search_content(s(np(n('How')),vp(are,np(n(things)))), how_are_you).
+% search_content(s(np(n('How')),vp(are,np(_,n(things)))), how_are_you).
 
-search_content(s(vp('Tell'),_), tell_me).
-search_content(s(_,vp(v(tell),_)), tell_me).
+% search_content(s(vp('Tell'),_), tell_me).
+% search_content(s(_,vp(v(tell),_)), tell_me).
 
-search_content(s(np(_,n(who)),vp(is,_)), who_is).
-search_content(s(np(_,n(who)),vp(is,_)), who_is).
-search_content(s(np(n('Who')),vp(is,_)), who_is).
-search_content(s(np(n('Who')),vp(is,_)), who_is).
+% search_content(s(np(_,n(who)),vp(is,_)), who_is).
+% search_content(s(np(_,n(who)),vp(is,_)), who_is).
+% search_content(s(np(n('Who')),vp(is,_)), who_is).
+% search_content(s(np(n('Who')),vp(is,_)), who_is).
 
 lex(the, det).
 lex('The', det).
@@ -137,6 +142,9 @@ lex('Never', n).
 lex(nope, n).
 lex(things,n).
 lex(thing, n).
+lex(bye, n).
+lex(goodbye, n).
+lex(quit, n).
 lex(shoots, v).
 lex(is, v).
 lex('Is', v).
