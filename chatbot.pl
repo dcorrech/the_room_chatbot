@@ -2,12 +2,12 @@
 :- [content].
 :- dynamic name/1, sports/1, cheat/1, murder/1, betrayed/1. %need to declare every predicate we want to learn as dynamic up here!
 
-% Main predicate.
+% Run this predicate to start the program.
 start :-
   welcome_user,
   gather_data(1).
 
-% Welcome user, retrieve name, and then save to dynamic database.
+% This predicate welcomes the user, retrieves the user's  name, and then saves the name  to dynamic database.
 welcome_user :-
     retrieve_content(ask_for_name, Y),
     write(Y),
@@ -21,22 +21,22 @@ welcome_user :-
     nl,
     assertz(name(X)).
 
-%Ask user questions and then save answer to dynamic database.
+% Ask's the user a given question and then stores the answer in the dynamic database.
 gather_data(State) :-
     nl,
     question(State,Question,Pred),
     write(Question),
     nl, nl,
-    readln(Input), search_input(Input,State, Ans), %parsenoun(Input,Ans)
+    readln(Input), search_input(Input,State, Ans),
     save_to_kb(Pred,Ans),
     NextState is (State + 1),
     gather_data(NextState).
 
-% Finished asking questions.
+% All questions have been asked. Now communicate the results.
 gather_data(5) :-
       communicate_test_results.
 
-% Communicates the test results to the user and then exits program.
+% Communicates the test results to the user and then asks if the user wishes to retake the test or leave.
 communicate_test_results :-
       write("Ha Ha Ha, what a story "), name(Name), write(Name), write("!"),
       nl, nl,
@@ -51,6 +51,7 @@ communicate_test_results :-
       readln([Z|_]),
       restart_test(Z).
 
+% Clear the dynamic database and then restart the test from the beginning.
 restart_test(yes) :-
    retractall(sports(_)),
    retractall(cheat(_)),
@@ -58,31 +59,20 @@ restart_test(yes) :-
    retractall(betrayed(_)),
    gather_data(1).
 
+% Write a message indicating the chat is beginning and then enter the chat.
 restart_test(no) :-
    retrieve_content(start_chat, X), nl,
    write(X),
    nl,
    chat.
 
-%    write("Well, I still have some time before I need to go pick up flowers for my new sweetie. Let's chat for a bit. Do you have any questions for me?"),
-%    chat.
-
-% chat :-
-%       repeat, nl,
-%       readln(Input), parse_input(Input,Object,Content),
-%       reply(Content, Object, Output),
-%       write(Output).
-
-% reply(bye,_,_) :-
-%       write("Why? Why? Why? Why is this happening to me! I can't deal with this any more! It's over! It's over!"),
-%       nl, write("Get out of my life, "), name(Name), write(Name), write("!"),
-%       halt(0).
-% reply(quit,_,_) :-
-
+% Read input, parse the input (and, in the process, categorize the input), and then call the correct reply
+% for the given input. Recurse on itself at the end.
 chat :-
       nl, readln(Input), parse_input(Input,Object,Content),
       reply(Content, Object), nl, chat.
 
+% All of the possible replies of the chatbot.
 reply(help, _) :-
       nl, retrieve_content(help, String),
       write(String), nl.
@@ -116,7 +106,7 @@ reply(error, _) :-
      nl, nl,
      write("I did not understand what you said!").
 
-% Saves predicates to dynamic database.
+% Save the given answer to the given predicate in the dynamic database.
 save_to_kb(Pred,Ans) :- is_name(Pred), assertz(name(Ans)).
 save_to_kb(Pred,Ans) :- is_sports(Pred), assertz(sports(Ans)).
 save_to_kb(Pred,Ans) :- is_cheat(Pred), assertz(cheat(Ans)).
@@ -130,12 +120,11 @@ is_cheat(cheat).
 is_murder(murder).
 is_betrayed(betrayed).
 
-% Possible profile options. The answers given select the profile according to the logic below.
+% All of the possible profile options, based on the answers to the questions asked by the chatbot. 
 get_results(denny) :- sports(football), cheat(no), murder(no), betrayed(no).
 get_results(johnny) :- sports(football), cheat(no), murder(no), betrayed(yes).
 get_results(mark) :- sports(football), cheat(no), murder(yes), betrayed(no).
 get_results(mark) :- sports(football), cheat(yes), murder(yes), betrayed(no).
-
 get_results(peter) :- sports(_), cheat(no), murder(no), betrayed(no).
 get_results(claudette) :- sports(_), cheat(no), murder(no), betrayed(yes).
 get_results(mark) :- sports(_), cheat(no), murder(yes), betrayed(no).
