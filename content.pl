@@ -16,12 +16,6 @@ lookup_profile(claudette, "Chronically overlooked and ignored, you are very much
 lookup_profile(chris_r, "Enigmatic to the core, you remind me very much of Chris R. You are dangerous. You wouldn't even think about stabbing a friend or stranger in the back for an extra couple dollars. Although you have a checkered and disturbing past, your life is tragic at its core. Although you never tell anyone, something horrific happened to you in your childhood. Fighting for your survival, you got involved with the wrong group of people, slowly finding yourself more and more trapped in a dangerous lifestyle. You may even be dealing drugs. My advice to you is this. Redemption is always around the corner. At each moment, there is a new opportunity to begin anew. Our past does not bind us to a prescribed future, that future is made in the incessant, spontaneous choices of the present. Never forget this. You can lead a life of virtue and kindness. All it takes is a leap and the commitment to perservere.").
 lookup_profile(random_party_guy, "Flashing out of the action just as quickly as you came, you remind me of that weird guy at my birthday party who randomly stated 'Lisa looks hot tonight!' And just like I do not understand that man's motivations, neither do I understand your own. You are a mystery to me. I guess some advice I would give you is, don't be like that guy. Don't say creepy stuff out of the blue like that. Especially at the birthday part of the fiancee of who you are directing your comments too.").
 
-% Used to retrieve strings to print.
-retrieve_content(ask_for_name, "It's bullshit. I did NOT hit her, I did nooooot- Oh hi Mark- Wait! What is your name?").
-retrieve_content(intro, "I have some great news for you. You are my first customer! After those idiots at the bank lead me on for months with a promotion, I have had enough! They betrayed me, they didn't keep their promise, they tricked me, and I don't care anymore! But I do care about you, my loyal customer. After the great tragedy I have experienced in life, I am here to provide you with fantastic life advice.").
-retrieve_content(start_test_communication, "Ha Ha Ha, I know you!").
-retrieve_content(start_chat, "Well, I still have some time before I need to go pick up flowers for my new sweetie. Let's chat for a bit.").
-
 error_messages(1, "YOU ARE TEARING ME APART!").
 error_messages(2, "So, how's your sex life?").
 error_messages(3, "Hi, doggie!").
@@ -70,3 +64,10 @@ retrieve_content(who_is, 'Chris R', "Who? Oh, you mean that guy who threatened t
 retrieve_content(do_you_like, football, "I love football!").
 retrieve_content(do_you_like, pizza, "Pizza is great, huh?").
 retrieve_content(do_you_like, alcohol, "You know I don't drink alcohol, silly.").
+% Used to retrieve strings to print.
+retrieve_content(ask_for_name, "It's bullshit. I did NOT hit her, I did nooooot- Oh hi Mark- Wait! What is your name?").
+retrieve_content(intro, "I have some great news for you. You are my first customer! After those idiots at the bank lead me on for months with a promotion, I have had enough! They betrayed me, they didn't keep their promise, they tricked me, and I don't care anymore! But I do care about you, my loyal customer. After the great tragedy I have experienced in life, I am here to provide you with fantastic life advice.").
+retrieve_content(start_test_communication, "Ha Ha Ha, I know you!").
+retrieve_content(start_chat, "Well, I still have some time before I need to go pick up flowers for my new sweetie. Let's chat for a bit.").
+%Help message
+retrieve_content(help, "Ha Ha Ha, you' don't know hot to talk to Johnny. Oh you funny guy. Say 'bye' or 'quit' to me if you want to leave our wonderful chat. Ask me 'how are you' to hear how I am doing. Ask me 'tell me' if you want to hear a story from Johnny. Ask me 'who is X' to let me tell you who my friends and enemies are. Ask me 'do you like X' to let me tell you what I like.").
