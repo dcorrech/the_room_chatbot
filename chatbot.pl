@@ -58,7 +58,9 @@ restart_test(yes) :-
    retractall(betrayed(_)),
    gather_data(1).
 restart_test(no) :-
-   write("Well, I still have some time before I need to go pick up flowers for my new sweetie. Let's chat for a bit."),
+   retrieve_content(start_chat, X),
+   write(X),
+   nl,
    chat.
 
 chat :-
