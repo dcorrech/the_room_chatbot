@@ -48,16 +48,19 @@ search_noun(np(n(N)),N) :- dif(N,'I'), dif(N,'How'), dif(N,'Who'), dif(N,'Where'
 search_noun(vp(_,n(N)),N) :- dif(N,'I'), dif(N,'How'), dif(N,'Who'), dif(N,'Where'), dif(N,'How'), dif(N,'Why').
 search_noun(vp(_,NP),N) :- search_noun(NP,N).
 
-parse_input([bye],_,bye).
-parse_input([quit],_,quit).
-parse_input([help],_,help).
+parse_input([bye|_],_,bye).
+parse_input([quit|_],_,quit).
+parse_input([help|_],_,help).
 parse_input([how,are,you|_],_,how_are_you).
-parse_input([],_,how_are_you).
 
 parse_input(Input,Object,Ans) :-
     s(Tree,Input,[]),
     search_content(Tree,Ans),
     search_noun(Tree,Object).
+
+parse_input(_, _, error).
+
+
 
 % search_content(s(np(_,n(how)),vp(are,np(_,n(you)))), how_are_you).
 % search_content(s(np(_,n(how)),vp(are,np(n(you)))), how_are_you).

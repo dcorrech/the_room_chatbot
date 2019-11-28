@@ -11,21 +11,22 @@ start :-
 welcome_user :-
     retrieve_content(ask_for_name, Y),
     write(Y),
-    nl,
+    nl, nl,
     readln([X|_]),
     nl,
     write("Oh hi "), write(X), write('!'),
     nl, nl,
     retrieve_content(intro, Z),
     write(Z),
-    nl, nl,
+    nl,
     assertz(name(X)).
 
 %Ask user questions and then save answer to dynamic database.
 gather_data(State) :-
+    nl,
     question(State,Question,Pred),
     write(Question),
-    nl,
+    nl, nl,
     readln(Input), search_input(Input,State, Ans), %parsenoun(Input,Ans)
     save_to_kb(Pred,Ans),
     NextState is (State + 1),
@@ -37,7 +38,6 @@ gather_data(5) :-
 
 % Communicates the test results to the user and then exits program.
 communicate_test_results :-
-      nl,
       write("Ha Ha Ha, what a story "), name(Name), write(Name), write("!"),
       nl, nl,
       get_results(X),
@@ -57,8 +57,9 @@ restart_test(yes) :-
    retractall(murder(_)),
    retractall(betrayed(_)),
    gather_data(1).
+
 restart_test(no) :-
-   retrieve_content(start_chat, X),
+   retrieve_content(start_chat, X), nl,
    write(X),
    nl,
    chat.
@@ -79,31 +80,41 @@ restart_test(no) :-
 % reply(quit,_,_) :-
 
 chat :-
-      repeat,
-      readln(Input), parse_input(Input,Object,Content),
-      reply(Content, Object, Output),
-      write(Output),nl,fail.
+      nl, readln(Input), parse_input(Input,Object,Content),
+      reply(Content, Object), nl, chat.
 
-reply(help, _, String) :-
-      retrieve_content(help, _, String).      
-reply(bye, _, _) :-
-      write("Why? Why? Why? Why is this happening to me! I can't deal with this any more! It's over! It's over!"),
-      nl, write("Get out of my life, "), name(Name), write(Name), write("!"),nl,
+reply(help, _) :-
+      nl, retrieve_content(help, String),
+      write(String), nl.
+reply(bye, _) :-
+      nl, write("Why? Why? Why? Why is this happening to me! I can't deal with this any more! It's over! It's over!"),
+      nl, nl, write("Get out of my life, "), name(Name), write(Name), write("!"),nl,nl,
       halt(0).
-reply(quit, _, _) :-
-      write("Why? Why? Why? Why is this happening to me! I can't deal with this any more! It's over! It's over!"),
-      nl, write("Get out of my life, "), name(Name), write(Name), write("!"),nl,
+reply(quit, _) :-
+      nl, write("Why? Why? Why? Why is this happening to me! I can't deal with this any more! It's over! It's over!"),
+      nl, nl, write("Get out of my life, "), name(Name), write(Name), write("!"),nl,nl,
       halt(0).
-reply(how_are_you, _,  String) :-
-      random_between(1, 3, Int),
-      retrieve_content(how_are_you, Int, String).
-reply(who_is, Object, String) :-
-      retrieve_content(who_is, Object, String).
-reply(do_you_like, Object, String) :-
-    retrieve_content(do_you_like, Object, String).
-reply(tell_me, _, String) :-
-    random_between(1, 3, Int),
-    retrieve_content(tell_me, Int, String).
+reply(how_are_you, _) :-
+      nl, random_between(1, 3, Int),
+      retrieve_content(how_are_you, Int, String),
+      write(String).
+reply(who_is, Object) :-
+      nl, retrieve_content(who_is, Object, String),
+      write(String), nl.
+reply(do_you_like, Object) :-
+    nl, retrieve_content(do_you_like, Object, String),
+    write(String), nl.
+reply(tell_me, _) :-
+    nl, random_between(1, 3, Int),
+    retrieve_content(tell_me, Int, String),
+    write(String), nl.
+reply(error, _) :-
+     nl,
+     random_between(1, 10, Random),
+     error_messages(Random, ErrorMsg),
+     write(ErrorMsg),
+     nl, nl,
+     write("I did not understand what you said!").
 
 % Saves predicates to dynamic database.
 save_to_kb(Pred,Ans) :- is_name(Pred), assertz(name(Ans)).
