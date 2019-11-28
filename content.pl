@@ -3,7 +3,7 @@
 :- [nlp].
 
 % Questions that the chatbot will ask the user.
-question(1, "What is your favorite sport? Mine is football, I love playing catch with Denny! (yes/no)", sports).
+question(1, "What is your favorite sport? Mine is football, I love playing catch with Denny!", sports).
 question(2, "Would you ever cheat on your fiance with his best friend? Asking for a friend. (yes/no)",cheat).
 question(3, "Have you ever tried to throw someone off the top off a building? (yes/no)", murder).
 question(4, "Have you ever been betrayed by the one you love most in this world and would give anything for them but they betray you? Not that I know what that is like. This is about you. (yes/no)", betrayed).

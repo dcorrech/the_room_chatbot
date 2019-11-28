@@ -30,7 +30,7 @@ search_input(Input, State, Ans) :-
    write(ErrorMsg),
    nl, nl,
    write("I did not understand what you said!"),
-   nl,nl,
+   nl,
    gather_data(State).
 
 % To search for a noun, first generate the parse tree of the supplied input, then search for the noun in the tree.

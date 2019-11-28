@@ -102,9 +102,7 @@ reply(error, _) :-
      nl,
      random_between(1, 10, Random),
      error_messages(Random, ErrorMsg),
-     write(ErrorMsg),
-     nl, nl,
-     write("I did not understand what you said!").
+     write(ErrorMsg).
 
 % Save the given answer to the given predicate in the dynamic database.
 save_to_kb(Pred,Ans) :- is_name(Pred), assertz(name(Ans)).
@@ -120,7 +118,7 @@ is_cheat(cheat).
 is_murder(murder).
 is_betrayed(betrayed).
 
-% All of the possible profile options, based on the answers to the questions asked by the chatbot. 
+% All of the possible profile options, based on the answers to the questions asked by the chatbot.
 get_results(denny) :- sports(football), cheat(no), murder(no), betrayed(no).
 get_results(johnny) :- sports(football), cheat(no), murder(no), betrayed(yes).
 get_results(mark) :- sports(football), cheat(no), murder(yes), betrayed(no).
