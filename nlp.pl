@@ -50,9 +50,10 @@ search_noun(vp(_,NP),N) :- search_noun(NP,N).
 
 parse_input([bye],_,bye).
 parse_input([quit],_,quit).
+parse_input([help],_,help).
 parse_input([how,are,you|_],_,how_are_you).
-parse_input([how,are,things|_],_,how_are_you).
 parse_input([],_,how_are_you).
+
 parse_input(Input,Object,Ans) :-
     s(Tree,Input,[]),
     search_content(Tree,Ans),
@@ -145,6 +146,7 @@ lex(thing, n).
 lex(bye, n).
 lex(goodbye, n).
 lex(quit, n).
+lex(help, n).
 lex(shoots, v).
 lex(is, v).
 lex('Is', v).

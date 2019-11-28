@@ -84,6 +84,8 @@ chat :-
       reply(Content, Object, Output),
       write(Output),nl,fail.
 
+reply(help, _, String) :-
+      retrieve_content(help, _, String).      
 reply(bye, _, _) :-
       write("Why? Why? Why? Why is this happening to me! I can't deal with this any more! It's over! It's over!"),
       nl, write("Get out of my life, "), name(Name), write(Name), write("!"),nl,
