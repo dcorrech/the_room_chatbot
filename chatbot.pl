@@ -58,23 +58,50 @@ restart_test(yes) :-
    retractall(betrayed(_)),
    gather_data(1).
 restart_test(no) :-
-   write("Well, I still have some time before I need to go pick up flowers for my new sweetie. Let's chat for a bit. Do you have any questions for me?"),
+   retrieve_content(start_chat, X),
+   write(X),
+   nl,
    chat.
 
+%    write("Well, I still have some time before I need to go pick up flowers for my new sweetie. Let's chat for a bit. Do you have any questions for me?"),
+%    chat.
+
+% chat :-
+%       repeat, nl,
+%       readln(Input), parse_input(Input,Object,Content),
+%       reply(Content, Object, Output),
+%       write(Output).
+
+% reply(bye,_,_) :-
+%       write("Why? Why? Why? Why is this happening to me! I can't deal with this any more! It's over! It's over!"),
+%       nl, write("Get out of my life, "), name(Name), write(Name), write("!"),
+%       halt(0).
+% reply(quit,_,_) :-
+
 chat :-
-      repeat, nl,
-      readln(Input), parse_input(Input,Object,Content),
+      repeat,
+      readln(Input), parse_input(Input,null,Content),
       reply(Content, Object, Output),
       write(Output).
 
-reply(bye,_,_) :-
+reply(bye, _, _) :-
       write("Why? Why? Why? Why is this happening to me! I can't deal with this any more! It's over! It's over!"),
       nl, write("Get out of my life, "), name(Name), write(Name), write("!"),
       halt(0).
-reply(quit,_,_) :-
+reply(quit, _, _) :-
       write("Why? Why? Why? Why is this happening to me! I can't deal with this any more! It's over! It's over!"),
       nl, write("Get out of my life, "), name(Name), write(Name), write("!"),
       halt(0).
+reply(how_are_you, _,  String) :-
+      random_between(1, 3, Int),
+      retrieve_content(how_are_you, Int, String).
+reply(who_is, Object, String) :-
+      retrieve_content(who_is, Object, String).
+reply(do_you_like, Object, String) :-
+    retrieve_content(do_you_like, Object, String).
+reply(tell_me, _, String) :-
+    random_between(1, 3, Int),
+    retrieve_content(tell_me, Int, String).
 
 % Saves predicates to dynamic database.
 save_to_kb(Pred,Ans) :- is_name(Pred), assertz(name(Ans)).
