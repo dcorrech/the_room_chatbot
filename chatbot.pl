@@ -87,7 +87,7 @@ reply(quit, _) :-
 reply(how_are_you, _) :-
       nl, random_between(1, 3, Int),
       retrieve_content(how_are_you, Int, String),
-      write(String).
+      write(String), nl.
 reply(who_is, Object) :-
       nl, retrieve_content(who_is, Object, String),
       write(String), nl.
