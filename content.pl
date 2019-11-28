@@ -34,31 +34,31 @@ error_messages(9, "Why? Why is this happening to me? Why?!").
 error_messages(10, "I mean the candles, the music, the sexy dress, I mean, what’s going on here?").
 
 % How are you responses
-responses(how_are_you, 1, "Ha Ha Ha, I am doing so so so bad. Everybody betray me. I don’t have a friend in the world.").
-responses(how_are_you, 2, "I cannot tell you, it’s confidential.").
-responses(how_are_you, 3, "My new sweetie is teasing me about whether we are going to get married or not. And we didn’t make love in a while. And I don’t know what to do. I guess I'm ok.").
+retrieve_content(how_are_you, 1, "Ha Ha Ha, I am doing so so so bad. Everybody betray me. I don’t have a friend in the world.").
+retrieve_content(how_are_you, 2, "I cannot tell you, it’s confidential.").
+retrieve_content(how_are_you, 3, "My new sweetie is teasing me about whether we are going to get married or not. And we didn’t make love in a while. And I don’t know what to do. I guess I'm ok.").
 
 % Tell me X responses
-responses(tell_me, 1, "People are very strange these days. I used to know a girl, she had a dozen guys. One of them found out about it, beat her up so bad she ended up in a hospital on Guerrero Street.").
-responses(tell_me, 2, "You can love someone deep inside your heart, and there is nothing wrong with it. If a lot of people loved each other, the world would be a better place to live.").
-responses(tell_me, 3, "Okay. I'm going at it with my sweetie, and um, I get out of there as fast as possible, you know, I get my pants, I get my shirt, and I get out of there. And then about halfway down the stairs, I realize that I have misplaced, I’ve forgotten something. Um, my underwear. So I come back to get it, I pretend that I need a book, you know, I’m like looking for my book, and then I reach and put the underwear in my pocket, sort of slide out real quick. Well her mom, she saw it sticking out of my pocket, so she pulls it out, and she’s, uh, showing everybody me underwears.").
+retrieve_content(tell_me, 1, "People are very strange these days. I used to know a girl, she had a dozen guys. One of them found out about it, beat her up so bad she ended up in a hospital on Guerrero Street.").
+retrieve_content(tell_me, 2, "You can love someone deep inside your heart, and there is nothing wrong with it. If a lot of people loved each other, the world would be a better place to live.").
+retrieve_content(tell_me, 3, "Okay. I'm going at it with my sweetie, and um, I get out of there as fast as possible, you know, I get my pants, I get my shirt, and I get out of there. And then about halfway down the stairs, I realize that I have misplaced, I’ve forgotten something. Um, my underwear. So I come back to get it, I pretend that I need a book, you know, I’m like looking for my book, and then I reach and put the underwear in my pocket, sort of slide out real quick. Well her mom, she saw it sticking out of my pocket, so she pulls it out, and she’s, uh, showing everybody me underwears.").
 
 % Bye responses
-responses(bye, 1, "Bye bye, my precious.").
-responses(bye, 2, "Ha Ha Ha, what a time we had together huh? Bye bye now.").
-responses(bye, 3, "I have to go now. I’ll see you later, darling.").
+retrieve_content(bye, 1, "Bye bye, my precious.").
+retrieve_content(bye, 2, "Ha Ha Ha, what a time we had together huh? Bye bye now.").
+retrieve_content(bye, 3, "I have to go now. I’ll see you later, darling.").
 
 % Who is
-responses(who_is, lisa, "She’s such a manipulative meanie!").
-responses(who_is, mark, "My ex-best friend and present enemy.").
-responses(who_is, denny, "Denny is the light of my life. I am always willing to support Denny, whether it is with school bills or just providing him a place to live.").
-responses(who_is, claudette, "That manipulative Lisa's equally crazy mother.").
-responses(who_is, peter, "He's just a little chicken, cheep, cheep, cheep, cheeeeeeeeeeeeep.").
-responses(who_is, mike, "Ha Ha Ha, oh Mike, what a silly guy. He always loses his underwear!").
-responses(who_is, michelle, "Michelle is very weird, just like Mike.").
-responses(who_is, chris_r, "Who? Oh, you mean that guy who threatened to kill Denny. Me and Mark took him to the police station. He's in jail now.").
+retrieve_content(who_is, lisa, "She’s such a manipulative meanie!").
+retrieve_content(who_is, mark, "My ex-best friend and present enemy.").
+retrieve_content(who_is, denny, "Denny is the light of my life. I am always willing to support Denny, whether it is with school bills or just providing him a place to live.").
+retrieve_content(who_is, claudette, "That manipulative Lisa's equally crazy mother.").
+retrieve_content(who_is, peter, "He's just a little chicken, cheep, cheep, cheep, cheeeeeeeeeeeeep.").
+retrieve_content(who_is, mike, "Ha Ha Ha, oh Mike, what a silly guy. He always loses his underwear!").
+retrieve_content(who_is, michelle, "Michelle is very weird, just like Mike.").
+retrieve_content(who_is, chris_r, "Who? Oh, you mean that guy who threatened to kill Denny. Me and Mark took him to the police station. He's in jail now.").
 
 % Do you like
-responses(do_you_like, football, "I love football!").
-responses(do_you_like, pizza, "Pizza is great, huh?").
-responses(do_you_like, alcohol, "You know I don't drink alcohol, silly.").
+retrieve_content(do_you_like, football, "I love football!").
+retrieve_content(do_you_like, pizza, "Pizza is great, huh?").
+retrieve_content(do_you_like, alcohol, "You know I don't drink alcohol, silly.").
