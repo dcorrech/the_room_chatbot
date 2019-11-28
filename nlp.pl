@@ -60,29 +60,6 @@ parse_input([who,is|T],Object,who_is) :- parsenoun(T,Object).
 parse_input(['Who',is|T],Object,who_is) :- parsenoun(T,Object).
 parse_input([do,you,like|T],Object,do_you_like) :- parsenoun(T,Object).
 parse_input(['Do',you,like|T],Object,do_you_like) :- parsenoun(T,Object).
-% parse_input(Input,Object,Ans) :-
-%     s(Tree,Input,[]),
-%     search_content(Tree,Ans),
-%     search_noun(Tree,Object).
-
-% search_content(s(np(_,n(how)),vp(are,np(_,n(you)))), how_are_you).
-% search_content(s(np(_,n(how)),vp(are,np(n(you)))), how_are_you).
-% search_content(s(np(n(how)),vp(are,np(n(you)))), how_are_you).
-% search_content(s(np(n(how)),vp(are,np(_,n(you)))), how_are_you).
-% search_content(s(np(n('How')),vp(are,np(n(you)))), how_are_you).
-% search_content(s(np(n('How')),vp(are,np(_,n(you)))), how_are_you).
-% search_content(s(np(_,n(how)),vp(are,np(_,n(things)))), how_are_you).
-% search_content(s(np(_,n(how)),vp(are,np(n(things)))), how_are_you).
-% search_content(s(np(n('How')),vp(are,np(n(things)))), how_are_you).
-% search_content(s(np(n('How')),vp(are,np(_,n(things)))), how_are_you).
-
-% search_content(s(vp('Tell'),_), tell_me).
-% search_content(s(_,vp(v(tell),_)), tell_me).
-
-% search_content(s(np(_,n(who)),vp(is,_)), who_is).
-% search_content(s(np(_,n(who)),vp(is,_)), who_is).
-% search_content(s(np(n('Who')),vp(is,_)), who_is).
-% search_content(s(np(n('Who')),vp(is,_)), who_is).
 
 lex(the, det).
 lex('The', det).
@@ -170,6 +147,7 @@ lex(thing, n).
 lex(bye, n).
 lex(goodbye, n).
 lex(quit, n).
+lex(pizza, n).
 lex(shoots, v).
 lex(is, v).
 lex('Is', v).
