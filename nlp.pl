@@ -52,11 +52,18 @@ parse_input([bye],_,bye).
 parse_input([quit],_,quit).
 parse_input([how,are,you|_],_,how_are_you).
 parse_input([how,are,things|_],_,how_are_you).
-parse_input([],_,how_are_you).
-parse_input(Input,Object,Ans) :-
-    s(Tree,Input,[]),
-    search_content(Tree,Ans),
-    search_noun(Tree,Object).
+parse_input(['How',are,you|_],_,how_are_you).
+parse_input(['How',are,things|_],_,how_are_you).
+parse_input([tell,me|_],_,tell_me).
+parse_input(['Tell',me],_,tell_me).
+parse_input([who,is|T],Object,who_is) :- parsenoun(T,Object).
+parse_input(['Who',is|T],Object,who_is) :- parsenoun(T,Object).
+parse_input([do,you,like|T],Object,do_you_like) :- parsenoun(T,Object).
+parse_input(['Do',you,like|T],Object,do_you_like) :- parsenoun(T,Object).
+% parse_input(Input,Object,Ans) :-
+%     s(Tree,Input,[]),
+%     search_content(Tree,Ans),
+%     search_noun(Tree,Object).
 
 % search_content(s(np(_,n(how)),vp(are,np(_,n(you)))), how_are_you).
 % search_content(s(np(_,n(how)),vp(are,np(n(you)))), how_are_you).
@@ -80,6 +87,24 @@ parse_input(Input,Object,Ans) :-
 lex(the, det).
 lex('The', det).
 lex(a, det).
+lex(lisa,n).
+lex('Lisa',n).
+lex(mark,n).
+lex('Mark',n).
+lex(peter,n).
+lex('Peter',n).
+lex(chris_r,n).
+lex('Chris R',n).
+lex(claudette,n).
+lex('Claudette',n).
+lex(mike,n).
+lex('Mike',n).
+lex(michelle,n).
+lex('Michelle',n).
+lex(denny,n).
+lex('Denny',n).
+lex(johnny,n).
+lex('Johnny',n).
 lex('Who', n).
 lex('What', n).
 lex('Where', n).

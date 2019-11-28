@@ -57,6 +57,14 @@ retrieve_content(who_is, peter, "He's just a little chicken, cheep, cheep, cheep
 retrieve_content(who_is, mike, "Ha Ha Ha, oh Mike, what a silly guy. He always loses his underwear!").
 retrieve_content(who_is, michelle, "Michelle is very weird, just like Mike.").
 retrieve_content(who_is, chris_r, "Who? Oh, you mean that guy who threatened to kill Denny. Me and Mark took him to the police station. He's in jail now.").
+retrieve_content(who_is, 'Lisa', "She’s such a manipulative meanie!").
+retrieve_content(who_is, 'Mark', "My ex-best friend and present enemy.").
+retrieve_content(who_is, 'Denny', "Denny is the light of my life. I am always willing to support Denny, whether it is with school bills or just providing him a place to live.").
+retrieve_content(who_is, 'Claudette', "That manipulative Lisa's equally crazy mother.").
+retrieve_content(who_is, 'Peter', "He's just a little chicken, cheep, cheep, cheep, cheeeeeeeeeeeeep.").
+retrieve_content(who_is, 'Mike', "Ha Ha Ha, oh Mike, what a silly guy. He always loses his underwear!").
+retrieve_content(who_is, 'Michelle', "Michelle is very weird, just like Mike.").
+retrieve_content(who_is, 'Chris R', "Who? Oh, you mean that guy who threatened to kill Denny. Me and Mark took him to the police station. He's in jail now.").
 
 % Do you like
 retrieve_content(do_you_like, football, "I love football!").
