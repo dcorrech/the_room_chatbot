@@ -93,13 +93,11 @@ restart_test(yes) :-
    gather_data(1).
 restart_test(no) :-
    write("Well, I still have some time before I need to go pick up flowers for my new sweetie. Let's chat for a bit."),
-   chat_with_johnny.
-
-chat_with_johnny :- halt(0).
+   chat.
 
 chat :-
       repeat,
-      readin(Input), parse_input(Input,null,Content),
+      readln(Input), parse_input(Input,null,Content),
       reply(Content, Output),
       write(Output).
 
