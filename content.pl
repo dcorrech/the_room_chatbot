@@ -41,6 +41,8 @@ retrieve_content(tell_me, 2, "You can love someone deep inside your heart, and t
 retrieve_content(tell_me, 3, "Okay. I'm going at it with my sweetie, and um, I get out of there as fast as possible, you know, I get my pants, I get my shirt, and I get out of there. And then about halfway down the stairs, I realize that I have misplaced, I’ve forgotten something. Um, my underwear. So I come back to get it, I pretend that I need a book, you know, I’m like looking for my book, and then I reach and put the underwear in my pocket, sort of slide out real quick. Well her mom, she saw it sticking out of my pocket, so she pulls it out, and she’s, uh, showing everybody me underwears.").
 
 % Responses of the chat bot to "who is X" questions.
+retrieve_content(who_is, johnny, "So silly, that's just me!").
+retrieve_content(who_is, 'Johnny', "So silly, that's just me, darling!").
 retrieve_content(who_is, lisa, "She’s such a manipulative meanie!").
 retrieve_content(who_is, mark, "My ex-best friend and present enemy.").
 retrieve_content(who_is, denny, "Denny is the light of my life. I am always willing to support Denny, whether it is with school bills or just providing him a place to live.").
@@ -48,7 +50,7 @@ retrieve_content(who_is, claudette, "That manipulative Lisa's equally crazy moth
 retrieve_content(who_is, peter, "He's just a little chicken, cheep, cheep, cheep, cheeeeeeeeeeeeep.").
 retrieve_content(who_is, mike, "Ha Ha Ha, oh Mike, what a silly guy. He always loses his underwear!").
 retrieve_content(who_is, michelle, "Michelle is very weird, just like Mike.").
-retrieve_content(who_is, chris_r, "Who? Oh, you mean that guy who threatened to kill Denny. Me and Mark took him to the police station. He's in jail now.").
+retrieve_content(who_is, chris, "Who? Oh, you mean that guy who threatened to kill Denny. Me and Mark took him to the police station. He's in jail now.").
 retrieve_content(who_is, 'Lisa', "She’s such a manipulative meanie!").
 retrieve_content(who_is, 'Mark', "My ex-best friend and present enemy.").
 retrieve_content(who_is, 'Denny', "Denny is the light of my life. I am always willing to support Denny, whether it is with school bills or just providing him a place to live.").
@@ -56,12 +58,14 @@ retrieve_content(who_is, 'Claudette', "That manipulative Lisa's equally crazy mo
 retrieve_content(who_is, 'Peter', "He's just a little chicken, cheep, cheep, cheep, cheeeeeeeeeeeeep.").
 retrieve_content(who_is, 'Mike', "Ha Ha Ha, oh Mike, what a silly guy. He always loses his underwear!").
 retrieve_content(who_is, 'Michelle', "Michelle is very weird, just like Mike.").
-retrieve_content(who_is, 'Chris R', "Who? Oh, you mean that guy who threatened to kill Denny. Me and Mark took him to the police station. He's in jail now.").
+retrieve_content(who_is, 'Chris', "Who? Oh, you mean that guy who threatened to kill Denny. Me and Mark took him to the police station. He's in jail now.").
+retrieve_content(who_is, _ , "As long as they don't break my heart like Lisa and Mark, they're good in my book!").
 
 % Responses of the chat bot to "do you like X" questions.
 retrieve_content(do_you_like, football, "I love football!").
 retrieve_content(do_you_like, pizza, "Pizza is great, huh?").
 retrieve_content(do_you_like, alcohol, "You know I don't drink alcohol, silly.").
+retrieve_content(do_you_like, _, "This is the first time I've heard of this. I love it, darling!").
 
 % Responses of the chat bot in specific locations of the bot's execution.
 retrieve_content(ask_for_name, "It's bullshit. I did NOT hit her, I did nooooot- Oh hi Mark- Wait! What is your name?").

@@ -1,6 +1,6 @@
 :- [nlp].
 :- [content].
-:- dynamic name/1, sports/1, cheat/1, murder/1, betrayed/1. %need to declare every predicate we want to learn as dynamic up here!
+:- dynamic name/1, sports/1, cheat/1, murder/1, betrayed/1. %declaring dynamic constants
 
 % Run this predicate to start the program.
 start :-
@@ -35,6 +35,7 @@ gather_data(State) :-
 % All questions have been asked. Now communicate the results.
 gather_data(5) :-
       communicate_test_results.
+
 
 % Communicates the test results to the user and then asks if the user wishes to retake the test or leave.
 communicate_test_results :-

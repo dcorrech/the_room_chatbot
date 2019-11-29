@@ -1,4 +1,4 @@
-% This file inclues all of our code that handles the natural language processing aspect of the chatbot.
+% This file includes all of our code that handles the natural language processing aspect of the chatbot.
 
 % Definite Context Grammar used to define the Context Free Grammar accepted by our program.
 % We accept three kinds of sentences: a single noun phrase, a single verb phrase, and a noun phrase followed by a verb phrase.
@@ -61,25 +61,23 @@ parse_input([who,is|T],Object,who_is) :- parsenoun(T,Object).
 parse_input(['Who',is|T],Object,who_is) :- parsenoun(T,Object).
 parse_input([do,you,like|T],Object,do_you_like) :- parsenoun(T,Object).
 parse_input(['Do',you,like|T],Object,do_you_like) :- parsenoun(T,Object).
-
-% parse_input(Input,Object,Ans) :-
-%     s(Tree,Input,[]),
-%     search_content(Tree,Ans),
-%     search_noun(Tree,Object).
 parse_input(_, _, error).
+
 % The lexicon of all the words accepted by our chat bot.
 % Each lex entrie includes the word and its type.
 lex(the, det).
 lex('The', det).
 lex(a, det).
+lex(you,n).
+lex('You',n).
 lex(lisa,n).
 lex('Lisa',n).
 lex(mark,n).
 lex('Mark',n).
 lex(peter,n).
 lex('Peter',n).
-lex(chris_r,n).
-lex('Chris R',n).
+lex(chris,n).
+lex('Chris',n).
 lex(claudette,n).
 lex('Claudette',n).
 lex(mike,n).
@@ -156,7 +154,14 @@ lex(bye, n).
 lex(goodbye, n).
 lex(quit, n).
 lex(pizza, n).
+lex(alcohol, n).
 lex(help, n).
+lex(bad,n).
+lex(good,n).
+lex(something,n).
+lex(ok,n).
+lex(life,n).
+lex(please,n).
 lex(shoots, v).
 lex(is, v).
 lex('Is', v).
